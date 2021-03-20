@@ -71,4 +71,5 @@ export default {
   .searchStyle {
     width: 11rem;
   }
+
 </style>

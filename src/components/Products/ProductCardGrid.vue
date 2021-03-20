@@ -4,7 +4,7 @@
       <router-link :to="'/product/details/' + product.id" >
       <div class="textStyle">
         <div class="row gradient-custom">
-          <h4 class="col-3 align-text-center">Name:</h4>
+          <h4 class="col-3 align-text-center headerStyle">Name:</h4>
           <p class="col-9 headerStyle"> {{ product.name }}</p>
         </div>
         <div class="row mt-2">
@@ -58,7 +58,7 @@ export default {
     border-right: 2px solid #30cfd0;
     border-top: 2px solid #30cfd0;
     color: black;
-    padding: 1rem;
+    padding: 0.5rem;
     background-color: #fff;
   }
 
@@ -66,6 +66,7 @@ export default {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.404);
     border-radius: 5px;
     min-width: 300px;
+
   }
 
   .imgStyle {
@@ -126,13 +127,13 @@ export default {
   }
   p {
     color: black;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 500;
   }
 
   .headerStyle {
     color: white;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 600;
   }
 

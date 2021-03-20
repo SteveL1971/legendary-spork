@@ -1,16 +1,21 @@
 <template>
   <div>
-    <div class="list mt-4">
+    <div class="list">
+      <div class="mt-4">{{count}} items in basket</div>  
+      <div class="mb-4">Totalpris: {{totalPrice}}kr</div>  
+      <button @click="saveOrder" class="btn">SAVE</button>
       <cart-list v-for="product in cart" :key="product.id" class="card" :product="product" />
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+
+import { mapActions, mapGetters } from 'vuex'
 import CartList from './CartList'
 export default {
   components: {
+
     CartList
   },
   data() {
@@ -18,9 +23,10 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['saveOrder'])
   },
   computed: {
-    ...mapGetters(['cart'])
+    ...mapGetters(['cart', 'count', 'totalPrice'])
   }
 }
 </script>

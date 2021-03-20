@@ -34,10 +34,14 @@ export default new Vuex.Store({
       { id: '26', name: 'Sauron', series: 'Lord of the Rings', number: '122', price: 149, img: '122_1_Sauron.jpg' }
     ],
     cart: [],
+    order: [],
+    orderNumber:0,
     product: null,
     comp: 'Grid',
     searchVal: '',
     count: 0,
+    totalPrice: 0,
+    populate: false
 
   },
   getters: {
@@ -52,8 +56,12 @@ export default new Vuex.Store({
       return taxedProducts
     },
     count: state => state.count,
+    totalPrice: state => state.totalPrice,
     comp: state => state.comp,
     cart: state => state.cart,
+    order: state => state.order,
+    orderNumber: state => state.orderNumber,
+    populate: state => state.populate,
     product: state => state.product,
     // filteredProducts: (state, getters) => {
     filteredProducts: (state) => {
@@ -80,16 +88,18 @@ export default new Vuex.Store({
           })
       } 
       if(!exists) {
-        state.cart.push({id: product.id, name: product.name, series: product.series,  price: product.price, img: product.img, amount: 1  })
+        state.cart.push({id: product.id, name: product.name, number: product.number, series: product.series,  price: product.price, img: product.img, amount: 1  })
       }
       state.count ++
+      state.totalPrice += Math.round(product.price * 1.2)
+      state.populate=true
     },
     MINUS_CART: (state, product) => {
 
       if(state.cart.length) {
         state.cart.forEach(c => {
             if(c.id === product.id) {
-              c.amount --
+              c.amount --        
               if (c.amount==0) {
                 state.cart.splice(state.cart.indexOf(product), 1)
                 console.log(state.cart)
@@ -99,13 +109,21 @@ export default new Vuex.Store({
           })
       } 
 
+      state.totalPrice -= Math.round(product.price * 1.2)
       state.count --
+      if(state.count == 0) {
+        state.populate=false
+      }
     },
 
     REMOVE_CART_ITEM: (state, product) => {
       state.count -= product.amount
+      state.totalPrice -= product.amount*Math.round(product.price * 1.2)
       state.cart.splice(state.cart.indexOf(product), 1)
       console.log(state.cart)
+      if(state.count == 0) {
+        state.populate=false
+      }
     },
     SUB: (state, amount) => {
       state.products.forEach(product => {
@@ -124,6 +142,17 @@ export default new Vuex.Store({
     },
     SEARCH: (state, val) => {
       state.searchVal = val
+    },
+    SAVE_ORDER: (state) => {
+      if(state.count>0){
+      state.order.push({orderNumber: state.orderNumber, date: new Date(), count: state.count, totalPrice: state.totalPrice, Cart: state.cart })
+      console.log(state.order)
+      state.cart = []
+      state.count = 0
+      state.orderNumber ++
+      state.totalPrice = 0
+      state.populate=false
+      }
     }
 
   },
@@ -158,6 +187,9 @@ export default new Vuex.Store({
     },
     search: ({commit}, val) => {
       commit('SEARCH', val)
+    },
+    saveOrder: ({commit}) => {
+      commit('SAVE_ORDER')
     },
   }
 })
