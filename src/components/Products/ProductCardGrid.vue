@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="">
     <div class="cardBox card">
       <router-link :to="'/product/details/' + product.id" >
       <div class="textStyle">

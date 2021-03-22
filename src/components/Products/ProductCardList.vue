@@ -1,38 +1,54 @@
 <template>
-  <router-link :to="'/product/details/' + product.id" class="card">
-    <div class="cardBox d-flex">
-      <div class="textStyle">
-        <div class="row gradient-custom">
-          <h4 class="col-2 align-text-center">Name:</h4>
-          <p class="col-10 headerStyle"> {{ product.name }}</p>
-        </div>
-        <div class="row mt-2">
-          <h5 class="col-2">Number:</h5>
-          <p class="col-10"> {{ product.number }}</p>
-        </div>
+  
+    <div class="listItem">
+      <div class="row w-100">
+        <router-link :to="'/product/details/' + product.id" class="card row bg-primary">
         <div class="row">
-          <h5 class="col-2">Series:</h5>
-          <p class="col-10"> {{ product.series }}</p>
+          <div class="cardBox d-flex col-10">
+            <div class="textStyle">
+              <div class="row gradient-custom">
+                <h4 class="col-2 align-text-center">Name:</h4>
+                <p class="col-10 headerStyle"> {{ product.name }}</p>
+              </div>
+              <div class="row mt-2">
+                <h5 class="col-2">Number:</h5>
+                <p class="col-10"> {{ product.number }}</p>
+              </div>
+              <div class="row">
+                <h5 class="col-2">Series:</h5>
+                <p class="col-10"> {{ product.series }}</p>
+              </div>
+              <div class="row">
+                <h5 class="col-2">Price ex VAT:</h5>
+                <p class="col-4"> {{ product.price }}kr</p>
+                <h5 class="col-2">Price incl VAT:</h5>
+                <!-- <p class="col-4">{{ product.price }}kr</p> -->
+                <p class="col-4">{{ Math.round(product.price*1.2) }}kr</p>
+              </div>
+            </div>
+          </div>
+          <div class="imgBox col">
+            <img :src="pImage" class="imgStyle" :alt="product.name">
+          </div>
         </div>
-        <div class="row">
-          <h5 class="col-2">Price ex VAT:</h5>
-          <p class="col-4"> {{ product.price }}kr</p>
-          <h5 class="col-2">Price incl VAT:</h5>
-          <!-- <p class="col-4">{{ product.price }}kr</p> -->
-          <p class="col-4">{{ Math.round(product.price*1.2) }}kr</p>
-        </div>
+        </router-link>
       </div>
-      <div class="imgBox">
-        <img :src="pImage" class="imgStyle" :alt="product.name">
+
+      <div class="buttons">
+        <button @click="addToCart(product)" class="btn btn-info"><i class="fas fa-cart-plus"></i></button>
       </div>
     </div>
-  </router-link>
+ 
+
 </template>
 
 <script>
-
+import { mapActions } from 'vuex'
 export default {  
   props: ['product'],
+    methods: {
+    ...mapActions(['addToCart'])
+  },
   computed: {
     pImage: function() {
       return require(`@/assets/img/` + this.product.img)
@@ -71,8 +87,8 @@ export default {
     display: flex;
     justify-content: center;
     border:0;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    /* margin-left: 1rem;
+    margin-right: 1rem; */
   }
 
   .smallText {
@@ -110,6 +126,25 @@ export default {
     color: white;
     font-size: 1.1rem;
     font-weight: 600;
+  }
+  .listItem {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .buttons {
+    background: white;
+    opacity: 1;
+    display: flex;
+    margin: auto;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn {
+    margin: 0px;
   }
 
 </style>
