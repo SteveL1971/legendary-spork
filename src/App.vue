@@ -20,14 +20,14 @@ export default {
   font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 .btn {
-  margin: 1rem 0 0 1rem;
-  padding: .5rem .8rem;
+  /* margin: 1rem 0 0 1rem; */
+  /* padding: .5rem .8rem; */
   border-radius: 10px;
   border: none;
   outline: none;
   cursor: pointer;
-  height: 2rem;
-  width: 3rem;
+  /* height: 2rem;
+  width: 3rem; */
 }
 
 .btn-black {
@@ -56,6 +56,17 @@ export default {
 
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right, rgba(48, 207, 208, 0.5), rgba(51, 8, 103, 0.5))
+}
+
+.gradient-custom2 {
+  /* fallback for old browsers */
+  background: #a8edea;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(168, 237, 234, 0.5), rgba(254, 214, 227, 0.5));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(168, 237, 234, 0.5), rgba(254, 214, 227, 0.5))
 }
 
 .row {

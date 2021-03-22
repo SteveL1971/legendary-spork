@@ -56,10 +56,9 @@ export default {
   }
 
   .btn {
-    padding: 0rem;
-    width:10rem;
-    margin-bottom: 2rem;
-    margin-left: 0;
+    margin: 0px;
+    padding: 8px;
+    width:8rem;
   }
 
 </style>

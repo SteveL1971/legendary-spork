@@ -5,6 +5,8 @@ import Orders from '../views/Orders.vue'
 import Cart from '../views/Cart.vue'
 import Products from '../views/Products.vue'
 import ProductDetails from '../views/ProductDetails.vue'
+import Customers from '../views/Customers.vue'
+import SignIn from '../views/SignIn.vue'
 
 Vue.use(VueRouter)
 
@@ -18,6 +20,16 @@ const routes = [
     path: '/orders',
     name: 'Orders',
     component: Orders
+  },
+  {
+    path: '/customers',
+    name: 'Customers',
+    component: Customers
+  },
+  {
+    path: '/signin',
+    name: 'SignIn',
+    component: SignIn
   },
   {
     path: '/products',

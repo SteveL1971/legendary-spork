@@ -145,6 +145,8 @@ export default {
 
   .btn {
     margin: 0px;
+    padding: 8px;
+    width: 3rem;
   }
 
 </style>

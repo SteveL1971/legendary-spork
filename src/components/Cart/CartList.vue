@@ -137,8 +137,9 @@ export default {
   }
 
   .btn {
-    margin: auto;
-    width: 2.5rem;
+    margin: 0px;
+    padding: 8px;
+    width: 3rem;
   }
 
   #buttons {

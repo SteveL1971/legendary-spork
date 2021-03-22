@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="list">
-      <orders-list v-for="product in order" :key="product.orderNumber" class="card" :product="product" />
+      <orders-list v-for="product in filterOrdersByCustomerId(signedInId)" :key="product.orderNumber" class="card" :product="product" />
+      <!-- <orders-list v-for="product in order" :key="product.orderNumber" class="card" :product="product" /> -->
+      <!-- <span v-for="event in filterEventsByDay(day)"> -->
     </div>
   </div>
 </template>
@@ -19,10 +21,15 @@ export default {
     }
   },
   methods: {
+    filterOrdersByCustomerId(id) {
+      console.log(id)
+      console.log(this.order)
+      return this.order.filter(product => product.customerId == id)
+  }
   },
 
   computed: {
-    ...mapGetters(['order'])
+    ...mapGetters(['order','signedInId'])
   }
 }
 </script>

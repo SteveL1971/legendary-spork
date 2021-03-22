@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import customers from './modules/Customers'
 
 Vue.use(Vuex)
 
@@ -41,7 +42,10 @@ export default new Vuex.Store({
     searchVal: '',
     count: 0,
     totalPrice: 0,
-    populate: false
+    populate: false,
+    // signedIn: false, 
+    // signedInId: ''   
+
 
   },
   getters: {
@@ -63,6 +67,10 @@ export default new Vuex.Store({
     orderNumber: state => state.orderNumber,
     populate: state => state.populate,
     product: state => state.product,
+
+    // signedIn: state => state.signedIn,
+    // signedInId: state => state.signedInId,
+
     // filteredProducts: (state, getters) => {
     filteredProducts: (state) => {
       // return state.products.filter(product => product.name.match(state.searchVal))
@@ -144,14 +152,15 @@ export default new Vuex.Store({
       state.searchVal = val
     },
     SAVE_ORDER: (state) => {
-      if(state.count>0){
-      state.order.push({orderNumber: state.orderNumber, date: new Date(), count: state.count, totalPrice: state.totalPrice, Cart: state.cart })
+      console.log("hmm", customers.state.signedIn)
+      if(state.count>0 && customers.state.signedIn){
+      state.order.push({orderNumber: state.orderNumber, customerId: customers.state.signedInId, date: new Date(), count: state.count, totalPrice: state.totalPrice, Cart: state.cart })
       console.log(state.order)
       state.cart = []
       state.count = 0
       state.orderNumber ++
       state.totalPrice = 0
-      state.populate=false
+      state.populate=false 
       }
     }
 
@@ -191,5 +200,8 @@ export default new Vuex.Store({
     saveOrder: ({commit}) => {
       commit('SAVE_ORDER')
     },
+  },
+  modules: {
+    customers
   }
 })

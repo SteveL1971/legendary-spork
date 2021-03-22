@@ -2,15 +2,15 @@
   <div>
     <div class="cardBox d-flex justify-content-between bg-white mb-2">
       <div class="textStyle">
-        <div class="row gradient-custom">
-          <h4 class="col-2 align-text-center">Order Number:</h4>
-          <p class="col-10 headerStyle"> {{ product.orderNumber }}  </p>
-          <h4 class="col-2 align-text-center">Order date:</h4>
-          <p class="col-10 headerStyle"> {{ product.date }}  </p>
-          <h4 class="col-2 align-text-center">Number of items:</h4>
-          <p class="col-10 headerStyle"> {{ product.count }}  </p>
-          <h4 class="col-2 align-text-center">Total order value:</h4>
-          <p class="col-10 headerStyle"> {{ product.totalPrice }}kr  </p>
+        <div class="row gradient-custom2">
+          <h4 class="col-2 align-text-center text-black">Order Number:</h4>
+          <p class="col-10 headerStyle text-black"> {{ product.orderNumber }}  </p>
+          <h4 class="col-2 align-text-center text-black">Order date:</h4>
+          <p class="col-10 headerStyle text-black"> {{ product.date }}  </p>
+          <h4 class="col-2 align-text-center text-black">Number of items:</h4>
+          <p class="col-10 headerStyle text-black"> {{ product.count }}  </p>
+          <h4 class="col-2 align-text-center text-black">Total order value:</h4>
+          <p class="col-10 headerStyle text-black"> {{ product.totalPrice }}kr  </p>
 
         </div>
         <div v-for="(product, index) in product.Cart" :key="index" class="card">

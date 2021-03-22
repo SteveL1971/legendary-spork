@@ -1,8 +1,11 @@
 <template>
   <nav>
-    <router-link to="/" class="logo">LOGO</router-link>
+    <router-link to="/" class="logo">{{signedInId}}</router-link>
+    {{signedIn}}
     <div class="navRight">
       <router-link class="link" to="/" exact>Home</router-link>
+      <router-link class="link" to="/signin">Login</router-link>
+      <router-link class="link" to="/customers">Customers</router-link>
       <router-link class="link" to="/orders" exact>Orders</router-link>
       <router-link class="link" to="/products" exact>Products</router-link>
       <router-link class="link d-flex basketDiv" to="/cart" exact>
@@ -17,7 +20,7 @@
 import { mapGetters } from 'vuex'
 export default {
   computed: {
-    ...mapGetters(['count']),
+    ...mapGetters(['count', 'signedInId', 'signedIn']),
     populate() {
       console.log(this.$store.getters.populate)
      return this.$store.getters.populate;

@@ -24,7 +24,7 @@
         <img :src="pImage" class="imgStyle" :alt="product.name">
       </div>
       </router-link>
-      <div class="d-flex justify-content-center mb-3">
+      <div class="d-flex justify-content-center my-3">
         <button @click="addToCart(product)" class="btn btn-info"><i class="fas fa-cart-plus"></i></button>
       </div>
     </div>
@@ -137,4 +137,9 @@ export default {
     font-weight: 600;
   }
 
+  .btn {
+    margin: 0px;
+    padding: 8px;
+    width: 3rem;
+  }
 </style>

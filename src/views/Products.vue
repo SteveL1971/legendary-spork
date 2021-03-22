@@ -65,7 +65,9 @@ export default {
   }
 
   .btn {
-    margin-top: 0;
+    margin: 0px;
+    padding: 8px;
+    width: 3rem;
   }
 
   .searchStyle {
