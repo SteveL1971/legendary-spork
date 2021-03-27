@@ -30,12 +30,9 @@
           <h5 class=""> Description: </h5>
           <h5>Magna sint duis minim officia eu tempor dolore commodo proident. Minim veniam velit cillum dolore cillum nostrud labore magna mollit adipisicing irure pariatur. Consequat voluptate cillum ea enim mollit. Commodo cupidatat velit sit cillum ullamco. Enim nisi aliqua do irure eiusmod tempor do velit excepteur excepteur magna duis. Duis nulla adipisicing laborum velit mollit dolor sunt pariatur amet do et aliqua laborum minim.</h5>  
         </div>
-        <div class="">
-          <button @click="subPrice(5)" class="btn">-</button>
-          <button @click="addToPrice" class="btn">+</button>
-        </div>
       </div>
-      <img :src="pImage" class="imgStyle" :alt="product.name">
+      <img :src=product.img class="imgStyle" :alt="product.name">
+      <!-- <img :src="pImage" class="imgStyle" :alt="product.name"> -->
 
     </div>
 
@@ -58,7 +55,7 @@ export default {
   },
   created() {
     this.getProduct(this.id)
-  }
+  },
 }
 </script>
 
