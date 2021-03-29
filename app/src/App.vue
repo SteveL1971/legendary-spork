@@ -20,13 +20,7 @@ export default {
   }
 }
 
-
 </script>
-
-
-
-
-
 
 <style>
 * {
@@ -35,6 +29,51 @@ export default {
   padding: 0;
   font-family:Verdana, Geneva, Tahoma, sans-serif
 }
+
+  .headerStyle {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  h5, p {
+    font-weight: 400;
+    font-size: 0.7rem;
+    padding: 0px;
+    margin: auto;
+    text-align: left;
+    color:rgb(99, 94, 94);
+    padding-left: 0.5rem;
+    line-height: 1.7;
+  }
+  h4 {
+    font-weight: 400;
+    font-size: 0.7rem;
+    padding: 0px;
+    margin: auto;
+    text-align: left;
+    color: white;
+    padding-left: 0.5rem;
+    line-height: 1.7;
+  }
+
+  .textStyle {
+    /* flex: 1; */
+    border: 2px solid #007bff50;
+    color: black;
+    background-color: #fff;
+    /* height:130px; */
+    border:0;
+    width:100%;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  .cardBox {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.404);
+    border-radius: 5px;
+    background: white;
+  }
 .btn {
   /* margin: 1rem 0 0 1rem; */
   /* padding: .5rem .8rem; */
@@ -83,6 +122,17 @@ export default {
 
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right, rgba(168, 237, 234, 0.5), rgba(254, 214, 227, 0.5))
+}
+
+.gradient-custom3 {
+  /* fallback for old browsers */
+  background: #a8edea;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(168, 237, 234, 0.5), rgba(0, 0, 0, 0.5));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(168, 237, 234, 0.5), rgba(0, 0, 0, 0.5))
 }
 
 .row {

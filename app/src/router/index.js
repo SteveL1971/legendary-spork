@@ -6,10 +6,12 @@ import Cart from '../views/Cart.vue'
 import Products from '../views/Products.vue'
 import Register from '../views/Register.vue'
 import ProductDetails from '../views/ProductDetails.vue'
-import Customers from '../views/Customers.vue'
+// import Customers from '../views/Customers.vue'
+import SignUp from '../views/SignUp.vue'
 import SignIn from '../views/SignIn.vue'
 import User from '../views/User.vue'
 import Login from '../views/Login.vue'
+import notFound from '../views/NotFound.vue'
 
 Vue.use(VueRouter)
 
@@ -25,9 +27,9 @@ const routes = [
     component: Orders
   },
   {
-    path: '/customers',
-    name: 'Customers',
-    component: Customers
+    path: '/signup',
+    name: 'SignUp',
+    component: SignUp
   },
   {
     path: '/login',
@@ -65,6 +67,11 @@ const routes = [
     path: '/cart',
     name: 'Cart',
     component: Cart
+  },
+  {
+    path: '*',
+    name: '404',
+    component: notFound
   }
 ]
 

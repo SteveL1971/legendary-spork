@@ -6,25 +6,41 @@ export default {
   state: {
     userToken: null,
     loggedIn: false,
-    loggedInId: null,
-    loggedInFirstName: null
+    loggedInFirstName: null,
+    loggedInUser: {
+      id: '...',
+      firstName: '',
+      lastName: '',
+      email: ''
+    }
   },
   getters: {
     loggedIn: state => state.loggedIn,
-    loggedInId: state => state.loggedInId,
-    loggedInFirstName: state => state.loggedInFirstName
+    loggedInFirstName: state => state.loggedInFirstName,
+    loggedInUser: state => state.loggedInUser
   },
   mutations: {
-    SET_USER: (state, token) => {
+    SET_USER: (state, token ) => {
       if(token) {
         state.userToken = token
         state.loggedIn = true
         var decoded = jwt_decode(token)
-        state.loggedInId=decoded.id
+        state.loggedInUser= {
+          id: decoded.id,
+          firstName: decoded.firstName,
+          lastName: decoded.lastName,
+          email: decoded.email
+        }
+        state.loggedInFirstName=decoded.firstName
       } else {
         state.userToken = null
         state.loggedIn = false
-        state.loggedInId= null
+        state.loggedInUser= {
+          id: '',
+          firstName: '',
+          lastName: '',
+          email: ''
+        }
       }
     },
     CHECK_USER: state => {
@@ -34,11 +50,25 @@ export default {
           state.userToken = token
           state.loggedIn = true
           var decoded = jwt_decode(token)
-          state.loggedInId=decoded.id
+          state.loggedInUser= {
+            id: decoded.id,
+            firstName: decoded.firstName,
+            lastName: decoded.lastName,
+            email: decoded.email
+          }
+          state.loggedInUser.id=decoded.id
+          state.loggedInUser.firstName=decoded.firstName
+          state.loggedInUser.lastName=decoded.lastName
+          state.loggedInUser.email=decoded.email
         } else {
           state.userToken = null
           state.loggedIn = false
-          state.loggedInId= null
+          state.loggedInUser= {
+            id: '',
+            firstName: '',
+            lastName: '',
+            email: ''
+          }
         }
       }
       catch(err) {
@@ -59,10 +89,8 @@ export default {
       axios.post('/users/login', payload.user)
         .then(res => {
           if(res.status === 200) {
-            
             localStorage.setItem('token', res.data.token)
-            commit('SET_USER', res.data.token)
-
+            commit('SET_USER', res.data.token )
             if(payload.route) {
               router.push(payload.route)
             } else {
@@ -78,9 +106,8 @@ export default {
       let token = localStorage.getItem('token')
       if(token) {
         localStorage.removeItem('token')
-
-        commit('SET_USER', null)
+        commit('SET_USER', null )
       }
     }
-  }
+  },
 }

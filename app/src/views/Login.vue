@@ -1,7 +1,7 @@
 <template>
-  <div class="container mt-5">
+  <div class="container mt-5 d-flex justify-content-center bg-info">
     <form class="border text-center p-5 col-6 mx-auto" @submit.prevent="onSubmit">
-      <p class="h4 mb-4">Sign In</p>
+      <p class="h4 mb-4">Sign In...</p>
       <!-- Email input -->
       <div class="form-outline mb-4">
         <input type="email" id="form2Example1" class="form-control border-bottom" v-model="email"/>

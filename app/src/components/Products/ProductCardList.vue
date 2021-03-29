@@ -1,10 +1,9 @@
 <template>
-  
-    <div class="listItem">
+    <div class="cardBox listItem">
       <div class="row w-100">
-        <router-link :to="'/product/details/' + product._id" class="card row bg-primary">
+        <router-link :to="'/product/details/' + product._id" class="row">
         <div class="row">
-          <div class="cardBox d-flex col-10">
+          <div class="d-flex col-10">
             <div class="textStyle">
               <div class="row gradient-custom">
                 <h4 class="col-2 align-text-center">Name:</h4>
@@ -75,8 +74,6 @@ export default {
 
   .imgStyle {
     width:130px;
-    height:130px;
-    opacity: 0.95;
   }
 
   .imgStyle:hover {
@@ -86,16 +83,17 @@ export default {
   .imgBox {
     background-color: #fff;
     display: flex;
+    margin: auto;
     justify-content: center;
+    align-items: center;
     border:0;
-    /* margin-left: 1rem;
-    margin-right: 1rem; */
   }
 
   .smallText {
     font-size: 0.6rem;
     font-weight: 300;
   }
+
 
   h5, p {
     font-weight: 400;
@@ -105,7 +103,7 @@ export default {
     text-align: left;
     color:rgb(99, 94, 94);
     padding-left: 0.5rem;
-    line-height: 1.7;
+    line-height: 2;
   }
   h4 {
     font-weight: 400;
@@ -115,11 +113,11 @@ export default {
     text-align: left;
     color: white;
     padding-left: 0.5rem;
-    line-height: 1.7;
+    line-height: 2;
   }
   p {
     color: black;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 500;
   }
 
@@ -148,6 +146,11 @@ export default {
     margin: 0px;
     padding: 8px;
     width: 3rem;
+  }
+
+  .row {
+    margin: 0px;
+    padding: 0px;
   }
 
 </style>

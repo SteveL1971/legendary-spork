@@ -15,7 +15,7 @@
         <div v-for="(product, index) in product.cart" :key="index" class="row">
           
             <div class="row gradient-custom">
-              <h4 class="col-md-2 col-sm-3 align-text-center">Name:</h4>
+              <h4 class="col-lg-1 col-md-2 col-sm-3 align-text-center">Name:</h4>
               <p class="col-sm headerStyle"> {{ product.name }}</p> 
             </div>
           <div class="col-md-10 col-sm-9">
@@ -81,32 +81,21 @@ export default {
       // console.log(this.index)
       return require(`@/assets/img/` + this.product.cart[1].img)
     },
-    ...mapGetters(['order'])
+    ...mapGetters(['order' , 'loggedInUser'])
   }
 }
 </script>
 
 <style scoped>
-  .textStyle {
-    /* flex: 1; */
-    border: 2px solid #007bff50;
-    color: black;
-    background-color: #fff;
-    /* height:130px; */
-    border:0;
-    width:100%;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-  }
-
-  .cardBox {
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.404);
-    border-radius: 5px;
-    background: white;
-  }
 
   .imgStyle {
     width:80px;
+  }
+
+  .cardBox {
+    display: flex;
+    margin: auto;
+    width: 99%;
   }
 
   .imgStyle:hover {
@@ -137,6 +126,7 @@ export default {
     padding-left: 0.5rem;
     line-height: 1.7;
   }
+
   h4 {
     font-weight: 400;
     font-size: 0.7rem;
@@ -147,7 +137,9 @@ export default {
     padding-left: 0.5rem;
     line-height: 1.7;
   }
+
   p {
+    padding: 0;
     color: black;
     font-size: 1rem;
     font-weight: 500;

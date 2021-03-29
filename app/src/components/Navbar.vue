@@ -1,25 +1,27 @@
 <template>
   <nav>
-    <router-link to="/" class="logo">
-    <img :src="pImage" class="imgStyle">
-    <i style="padding:0; align-text: center; margin: 1rem;" >Funko</i>
-    </router-link>
-    <div v-if="loggedIn">
-      <div>Welcome {{signedInCustomer.firstName}}!</div>
-      <a href="#" @click="logout">Log out</a>
+    <div class="row gradient-custom3">
+      <div class="navLeft row">
+        <router-link to="/" class="navLogo col">
+          <img :src="pImage" class="imgStyle">
+          <i style="padding:0; align-text: center; margin: 1rem;" >Funko</i>
+        </router-link>
+        <div v-if="loggedIn" class="navLeftText">
+          <div>Welcome {{ loggedInUser.firstName }}!</div>
+          <a href="#" @click="signOut">Log out</a>
+          <!-- <a href="#" @click="logout">Log out</a> -->
+        </div>
+      </div>
     </div>
-    
-    <!-- {{signedInCustomer.id}} -->
     <div class="navRight">
       <router-link class="link" to="/" exact>Home</router-link>
       <div v-if="!loggedIn"><router-link class="link" to="/signin">Login</router-link></div>
-      <router-link class="link" to="/customers">Customers</router-link>
-      <router-link class="link" to="/register">Register</router-link>
+      <div v-if="!loggedIn"><router-link class="link" to="/signup">Sign up</router-link></div>
       <router-link class="link" to="/orders" exact>Orders</router-link>
       <router-link class="link " to="/products" exact>Products</router-link>
       <router-link class="link d-flex basketDiv" to="/cart" exact>
-      <i class="fas fa-shopping-cart basket">  </i>
-      <div :class="{basketShow: !populate}" class="basketCount">{{count}}</div>
+        <i class="fas fa-shopping-cart basket">  </i>
+        <div :class="{basketShow: !populate}" class="basketCount">{{count}}</div>
       </router-link>
     </div>
   </nav>
@@ -29,7 +31,7 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   computed: {
-    ...mapGetters(['count', 'loggedIn', 'signedInCustomer']),
+    ...mapGetters(['count', 'loggedIn', 'loggedInUser']),
     populate() {
      return this.$store.getters.populate;
     },
@@ -38,7 +40,11 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['logout']),
+    ...mapActions(['logout', 'resetStore']),
+    signOut() {
+      this.logout()
+      this.resetStore()
+    }
   }
 }
 
@@ -51,14 +57,31 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
-    background: #201d1d;
+    background: #000000;
     color: #fff;
+    margin:0;
+    padding-left: 0rem;
+    padding-right: 2rem;
+    height: 100px;
+  }
+  .navLeft {
+    display: flex;
+    width: 40rem;
+    padding-left: 1rem;
+  }
+  .navLeftText {
+    display: inline-block;
+    margin: auto;
+    justify-content: start;
+    flex:1;
+    
   }
   .navRight {
     display:flex;
     font-size: 0.9rem;
   }
-  .logo {
+  .navLogo {
+    
     text-decoration: none;
     color: #fff;
     font-size: 2rem;
@@ -111,7 +134,8 @@ export default {
   }
 
   .imgStyle {
-    width: 30%;
+    /* width: 30%; */
+    height:100px;
   }
 </style>
 

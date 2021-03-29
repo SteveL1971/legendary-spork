@@ -1,14 +1,15 @@
 <template>
-  <div class="container mt-3 pt-5">
-    <sign-in class="mt-5 w-50" />
+  <div class="container pt-5">
+    <sign-in />
   </div>
 </template>
 
 <script>
+
 import SignIn from '../components/SignIn.vue'
 export default {
   components: {
-    SignIn
+    SignIn,
   }
 }
 </script>

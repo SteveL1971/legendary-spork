@@ -1,7 +1,7 @@
 <template>
 <div class="">
     <div class="cardBox card">
-      <router-link :to="'/product/details/' + product._id" >
+      
       <div class="textStyle">
         <div class="row gradient-custom">
           <h4 class="col-3 align-text-center headerStyle">Name:</h4>
@@ -13,13 +13,14 @@
         </div>
         <div class="row">
           <h5 class="col-3">Series:</h5>
-          <p class="col-9"> {{ product.series }}</p>
+          <a href="#" @click="catFilter(product.series)" class="col-9">{{ product.series }}</a>
         </div>
         <div class="row">
           <h5 class="col-3">Price:</h5>
           <p class="col-9"> {{  Math.round(product.price*1.2) }}kr <span class="smallText">incl VAT</span></p>
         </div>
       </div>
+      <router-link :to="'/product/details/' + product._id" >
       <div class="imgBox">
         <img :src=product.img class="imgStyle" :alt="product.name">
         <!-- <img :src="pImage" class="imgStyle" :alt="product.name"> -->
@@ -39,7 +40,7 @@ import { mapActions } from 'vuex'
 export default {  
   props: ['product'],
   methods: {
-    ...mapActions(['addToCart'])
+    ...mapActions(['addToCart' , 'catFilter'])
   },
   computed: {
     pImage: function() {
@@ -97,8 +98,9 @@ export default {
     padding: 2rem;
     display: flex;
     margin: auto;
-
     justify-content: center;
+    align-items: center;
+
   }
 
   .smallText {
@@ -115,7 +117,16 @@ export default {
     color:rgb(99, 94, 94);
     padding-left: 0.5rem;
     line-height: 2;
+    /* background-color: aquamarine; */
   }
+
+  a {
+    font-weight: 400;
+    font-size: 0.7rem;
+    text-decoration: 0;
+    /* background-color: aqua; */
+  }
+
   h4 {
     font-weight: 400;
     font-size: 0.7rem;

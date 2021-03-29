@@ -32,25 +32,23 @@ export default {
       }
     },
 
-    SIGN_IN_CUSTOMER: (state, { cusEmail, cusPassword }) => {
-      let exists = false;
-      let customerIndex = null;
+    // SIGN_IN_CUSTOMER: (state, { cusEmail, cusPassword }) => {
+    //   let exists = false;
+    //   let customerIndex = null;
+    //   for (var i = 0; i < state.customers.length; i++) {
+    //   if (state.customers[i].email==cusEmail) {
+    //     exists=true;
+    //     customerIndex=i;
+    //     }
+    //   }
+    //   if(exists==true){
+    //     if(cusPassword==state.customers[customerIndex].password){
+    //       state.signedIn=true;
+    //       state.signedInCustomer=state.customers[customerIndex]
+    //     }
+    //   }
+    // },
 
-      for (var i = 0; i < state.customers.length; i++) {
-      if (state.customers[i].email==cusEmail) {
-        exists=true;
-        customerIndex=i;
-        }
-      }
-
-      if(exists==true){
-        
-        if(cusPassword==state.customers[customerIndex].password){
-          state.signedIn=true;
-          state.signedInCustomer=state.customers[customerIndex]
-        }
-      }
-    },
     SIGN_OUT_CUSTOMER: (state) => {
       state.signedIn=false;
       state.signedInCustomer=[]
@@ -66,9 +64,9 @@ export default {
     addCustomer: ({commit}, [cusFirstName, cusLastName, cusEmail, cusPassword]) => {
       commit('ADD_CUSTOMER', { cusFirstName, cusLastName, cusEmail, cusPassword })
     },
-    signInCustomer: ({commit}, [cusEmail, cusPassword]) => {
-      commit('SIGN_IN_CUSTOMER',  { cusEmail, cusPassword })
-    },
+    // signInCustomer: ({commit}, [cusEmail, cusPassword]) => {
+    //   commit('SIGN_IN_CUSTOMER',  { cusEmail, cusPassword })
+    // },
     signOutCustomer: ({commit}) => {
       commit('SIGN_OUT_CUSTOMER')
     },

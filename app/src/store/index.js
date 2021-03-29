@@ -5,7 +5,9 @@ import customers from './modules/Customers'
 import user from './modules/user'
 
 Vue.use(Vuex)
-
+export const state = {
+  count: 'count'
+}
 export default new Vuex.Store({
   state: {
     products: [
@@ -16,11 +18,11 @@ export default new Vuex.Store({
     ],
     cart: [],
     order: [],
-    product: null,
+    product: [],
     comp: 'Grid',
     searchVal: '',
     count: 0,
-    totalPrice: 0,
+    totalPrice: 0, 
     populate: false,
   },
   getters: {
@@ -41,9 +43,11 @@ export default new Vuex.Store({
     order: state => state.order,
     populate: state => state.populate,
     product: state => state.product,
+    searchVal: state => state.searchVal,
 
     filteredProducts: (state) => {
-      return state.products.filter(product => product.name.toLowerCase().match(state.searchVal.toLowerCase()))
+      // return state.products.filter(product => product.name.toLowerCase().match(state.searchVal.toLowerCase()))
+      return state.products.filter(product => product.series.toLowerCase().match(state.searchVal.toLowerCase())||product.name.toLowerCase().match(state.searchVal.toLowerCase()))
     }
   },
   mutations: {
@@ -112,13 +116,34 @@ export default new Vuex.Store({
       state.searchVal = val
     },
 
+    RESET_FILTER: (state) => {
+      console.log('pop' , state.populate , state.cart )
+      state.searchVal = ''
+      console.log('pop' , state.populate , state.cart )
+      // vue.Products.data.searchVal = ''
+    },
+
+    RESET_STORE: (state) => {
+      state.cart = []
+      state.order = []
+      state.product = []
+      state.searchVal = ''
+      state.count = 0
+      state.totalPrice = 0,
+      state.populate = false
+    },
+
+    CATEGORY_FILTER: (state, val) => {
+      state.searchVal = val
+    },
+
     SAVE_ORDER: async (state, orders) => {
       state.order = orders
 
       if(state.count>0 && user.state.loggedIn){
-      const orderNumber = (state.order.filter(product => product.customerId == user.state.loggedInId).length)+1
+      const orderNumber = (state.order.filter(product => product.customerId == user.state.loggedInUser.id).length)+1
       const _cart = {
-        customerId : user.state.loggedInId, 
+        customerId : user.state.loggedInUser.id, 
         date : new Date(),
         count : state.count, 
         totalPrice : state.totalPrice,
@@ -131,32 +156,32 @@ export default new Vuex.Store({
       state.count = 0
       state.totalPrice = 0
       state.populate=false 
-
       }
     },
-    // SAVE_ORDER: async (state) => {
+    
+    SAVE_ORDER_ID: async (state, orders) => {
+      state.order = orders
 
-    //   if(state.count>0 && user.state.loggedIn){
-    //   const orderNumber = state.order.filter(product => product.customerId == user.state.loggedInId).length
-    //   const _cart = {
-    //     orderNumber : orderNumber +1,
-    //     customerId : user.state.loggedInId, 
-    //     date : new Date(),
-    //     count : state.count, 
-    //     totalPrice : state.totalPrice,
-    //     cart : state.cart
-    //   }
- 
-    //   await axios.post('/orders/order', _cart)
+      if(state.count>0 && user.state.loggedIn){
+      const orderNumber = (state.order.length)+1
+      const _cart = {
+        customerId : user.state.loggedInUser.id, 
+        date : new Date(),
+        count : state.count, 
+        totalPrice : state.totalPrice,
+        cart : state.cart,
+        orderNumber
+      }
+      await axios.post('/orders/order', _cart)
+      
+      state.cart = []
+      state.count = 0
+      state.totalPrice = 0
+      state.populate=false 
+      }
+    },
 
-    //   state.cart = []
-    //   state.count = 0
-    //   state.totalPrice = 0
-    //   state.populate=false 
-    //   }
-    // },
-
-    CLEAR_POST: state => state.product = []
+  CLEAR_POST: state => state.product = []
 
   },
   actions: {
@@ -175,9 +200,16 @@ export default new Vuex.Store({
     search: ({commit}, val) => {
       commit('SEARCH', val)
     },
+    catFilter: ({commit}, val) => {
+      commit('CATEGORY_FILTER', val)
+    },
     saveOrder: async ({commit}) => {
       const res = await axios.get('/orders/')
       commit('SAVE_ORDER', res.data)
+    },
+    saveOrderId: async ({commit}, id) => {
+      const res = await axios.get('/orders/' + id)
+      commit('SAVE_ORDER_ID', res.data)
     },
     getProducts: async ({commit}) => {
       const res = await axios.get('/products')
@@ -193,6 +225,12 @@ export default new Vuex.Store({
     },
     clearPost: ({commit}) => {
       commit('CLEAR_POST')
+    },
+    resetFilter: ({commit}) => {
+      commit('RESET_FILTER')
+    },
+    resetStore: ({commit}) => {
+      commit('RESET_STORE')
     },
   },
   modules: {

@@ -1,17 +1,17 @@
 <template>
-  <div class="container mt-3 pt-3">
+  <div class="container pt-5">
     <add-customer-form />
-    <customer-list class="mt-3" />
+    <!-- <customer-list class="mt-3" /> -->
   </div>
 </template>
 
 <script>
 import AddCustomerForm from '../components/Customer/AddCustomerForm'
-import CustomerList from '../components/Customer/CustomerList.vue'
+// import CustomerList from '../components/Customer/CustomerList.vue'
 export default {
   components: {
     AddCustomerForm,
-    CustomerList
+    // CustomerList
   }
 }
 </script>
