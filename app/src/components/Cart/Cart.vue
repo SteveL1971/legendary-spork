@@ -1,20 +1,16 @@
 <template>
   <div>
     <div v-if="loggedIn">
-      <div class="list">
-        <div class="d-flex justify-content-between align-items-center my-4">
-          <div class="w-100">
-            <div class="row">
-              <div class="col-4">Number of items in shopping cart: </div>
-              <div class="col">{{count}}</div>
-            </div>
-            <div class="row">  
-              <div class="col-4">Total value of shopping cart: </div>
-              <div class="col">{{totalPrice}}kr</div>  
-            </div>
+      <div v-if="count>0" class="list">
+        <div class="row my-4">
+          <div class="col-9 row px-2">
+              <p class="col-9">Number of items in shopping cart: </p>
+              <p class="col-3">{{count}}</p>
+              <p class="col-9">Total value of shopping cart: </p>
+              <p class="col-3">{{totalPrice}} kr</p>  
           </div>
-          <div>
-            <button @click="saveOrderId(loggedInUser.id)" class="btn btn-info m-0">Save cart</button>
+          <div class="col-3 d-flex justify-content-center align-items-center">
+            <button @click="saveOrderId(loggedInUser.id)" class="btn btn-primary">Save cart</button>
           </div>
         </div>
         <cart-list v-for="product in cart" :key="product.id" class="card" :product="product" />
@@ -82,6 +78,15 @@ export default {
     width: 30%;
   }
 
+    .headerP {
+    color: black;
+    font-size: 0.5rem;
+    font-weight: 500;
+    margin: auto;
+    text-align: left;
+    line-height: 2;
+  }
+
   .style404 {
     width: 100%;
     display: flex;
@@ -94,8 +99,10 @@ export default {
 
   .btn {
     margin: 0px;
-    padding: 8px;
-    width:8rem;
+    font-size: 0.6rem;
+    padding:0;
+    width:4rem;
+    height:1.5rem;
   }
 
 </style>

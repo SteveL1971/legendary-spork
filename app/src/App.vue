@@ -38,17 +38,17 @@ export default {
 
   h5, p {
     font-weight: 400;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     padding: 0px;
     margin: auto;
     text-align: left;
     color:rgb(99, 94, 94);
-    padding-left: 0.5rem;
+    /* padding-left: 0.5rem; */
     line-height: 1.7;
   }
   h4 {
     font-weight: 400;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     padding: 0px;
     margin: auto;
     text-align: left;
@@ -182,13 +182,13 @@ export default {
   }  
 }
 
-@media (min-width: 1280px) {
+/* @media (min-width: 1280px) {
   .contain {
     width: 1280px;
     margin:auto;
     padding: 0;
   }  
-}
+} */
 
 </style>
 

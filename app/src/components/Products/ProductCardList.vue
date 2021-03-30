@@ -1,42 +1,45 @@
 <template>
     <div class="cardBox listItem">
       <div class="row w-100">
-        <router-link :to="'/product/details/' + product._id" class="row">
+        
         <div class="row">
-          <div class="d-flex col-10">
+          <div class="d-flex col-9">
             <div class="textStyle">
-              <div class="row gradient-custom">
-                <h4 class="col-2 align-text-center">Name:</h4>
-                <p class="col-10 headerStyle"> {{ product.name }}</p>
+              <div class="row gradient-custom mx-2">
+                <h4 class="col-3 align-text-center nameH4">Name:</h4>
+                <p class="col headerStyle nameP"> {{ product.name }}</p>
               </div>
               <div class="row mt-2">
-                <h5 class="col-2">Number:</h5>
-                <p class="col-10"> {{ product.number }}</p>
+                <h5 class="col-3 orderH5">Number:</h5>
+                <p class="col orderP"> {{ product.number }}</p>
               </div>
               <div class="row">
-                <h5 class="col-2">Series:</h5>
-                <p class="col-10"> {{ product.series }}</p>
+                <h5 class="col-3 orderH5">Series:</h5>
+                <p class="col orderP"> {{ product.series }}</p>
               </div>
               <div class="row">
-                <h5 class="col-2">Price ex VAT:</h5>
-                <p class="col-4"> {{ product.price }}kr</p>
-                <h5 class="col-2">Price incl VAT:</h5>
-                <!-- <p class="col-4">{{ product.price }}kr</p> -->
-                <p class="col-4">{{ Math.round(product.price*1.2) }}kr</p>
+                <h5 class="col-3 orderH5">Price:</h5>
+                <p class="col orderP"> {{ product.price }}kr <small>excl VAT</small></p>
+              </div>
+              <div class="row">
+                <h5 class="col-3 orderH5">Price:</h5>
+                <p class="col orderP">{{ Math.round(product.price*1.2) }}kr <small>incl VAT</small></p>
               </div>
             </div>
           </div>
-          <div class="imgBox col">
-            <!-- <img :src="pImage" class="imgStyle" :alt="product.name"> -->
-            <img :src=product.img class="imgStyle" :alt="product.name">
+          <div class="imgBox col-3">
+            <router-link :to="'/product/details/' + product._id" class="row">
+            <div class="d-flex justify-content-center"><img :src=product.img class="imgStyle" :alt="product.name"></div>
+            </router-link>
+            <button @click="addToCart(product)" class="btn btn-info"><i class="fas fa-cart-plus"></i></button>
           </div>
         </div>
-        </router-link>
+        
       </div>
 
-      <div class="buttons">
+      <!-- <div class="buttons">
         <button @click="addToCart(product)" class="btn btn-info"><i class="fas fa-cart-plus"></i></button>
-      </div>
+      </div> -->
     </div>
  
 
@@ -63,7 +66,7 @@ export default {
     border: 2px solid #007bff50;
     color: black;
     background-color: #fff;
-    height:130px;
+    height:80px;
     border:0;
   }
 
@@ -73,7 +76,7 @@ export default {
   }
 
   .imgStyle {
-    width:130px;
+    width:60px;
   }
 
   .imgStyle:hover {
@@ -81,8 +84,7 @@ export default {
   }
 
   .imgBox {
-    background-color: #fff;
-    display: flex;
+    display: block;
     margin: auto;
     justify-content: center;
     align-items: center;
@@ -133,7 +135,6 @@ export default {
 
   .buttons {
     background: white;
-    opacity: 1;
     display: flex;
     margin: auto;
     margin-left: 1rem;
@@ -143,14 +144,70 @@ export default {
   }
 
   .btn {
-    margin: 0px;
-    padding: 8px;
-    width: 3rem;
+    display:flex;
+    margin:auto;
+    justify-content:center;
+    align-items:center;
+    padding:0;
+    width: 2.5rem;
+    height: 1.5rem;
+    margin-top:0.3rem;
   }
 
   .row {
     margin: 0px;
     padding: 0px;
+  }
+
+   .nameP {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: white;
+    margin: auto;
+    text-align: left;
+    line-height: 2;
+  }
+  .nameH4 {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: white;
+    margin: auto;
+    text-align: left;
+    line-height: 2;
+  }
+  .headerP {
+    color: black;
+    font-size: 0.5rem;
+    font-weight: 500;
+    margin: auto;
+    text-align: left;
+    line-height: 2;
+
+  }
+  .headerH4 {
+    color: black;
+    font-size: 0.5rem;
+    font-weight: 600;
+    margin: auto;
+    text-align: left;
+    line-height: 2;
+  }
+  .orderP {
+    color: black;
+    font-size: 0.5rem;
+    font-weight: 500;
+    margin: auto;
+    text-align: left;
+    line-height: 1.7;
+
+  }
+  .orderH5 {
+    color: black;
+    font-size: 0.5rem;
+    font-weight: 600;
+    margin: auto;
+    text-align: left;
+    line-height: 1.7;
   }
 
 </style>

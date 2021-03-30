@@ -1,28 +1,83 @@
 <template>
   <nav>
-    <div class="row gradient-custom3">
-      <div class="navLeft row">
+    <div class="gradient-custom3">
+      <div class="navLeft">
         <router-link to="/" class="navLogo col">
           <img :src="pImage" class="imgStyle">
-          <i style="padding:0; align-text: center; margin: 1rem;" >Funko</i>
         </router-link>
         <div v-if="loggedIn" class="navLeftText">
-          <div>Welcome {{ loggedInUser.firstName }}!</div>
-          <a href="#" @click="signOut">Log out</a>
-          <!-- <a href="#" @click="logout">Log out</a> -->
+          <div class="px-2">Hi {{ loggedInUser.firstName }}!</div>
         </div>
       </div>
     </div>
-    <div class="navRight">
-      <router-link class="link" to="/" exact>Home</router-link>
-      <div v-if="!loggedIn"><router-link class="link" to="/signin">Login</router-link></div>
-      <div v-if="!loggedIn"><router-link class="link" to="/signup">Sign up</router-link></div>
-      <router-link class="link" to="/orders" exact>Orders</router-link>
-      <router-link class="link " to="/products" exact>Products</router-link>
-      <router-link class="link d-flex basketDiv" to="/cart" exact>
-        <i class="fas fa-shopping-cart basket">  </i>
-        <div :class="{basketShow: !populate}" class="basketCount">{{count}}</div>
-      </router-link>
+
+    <div class="">
+      <div class="navRight">
+        <!-- <router-link class="link" to="/" exact>Home</router-link>
+        <div v-if="!loggedIn"><router-link class="link" to="/signin">Login</router-link></div>
+        <div v-if="!loggedIn"><router-link class="link" to="/signup">Sign up</router-link></div>
+        <router-link class="link" to="/orders" exact>Orders</router-link>
+        <router-link class="link" to="/products" exact>Products</router-link>
+        <router-link class="link d-flex basketDiv" to="/cart" exact>
+          <i class="fas fa-shopping-cart basket">  </i>
+          <div :class="{basketShow: !populate}" class="basketCount">{{count}}</div>
+        </router-link> -->
+
+        <div class="container-fluid">
+          <ul class="navbar-nav">
+            <!-- Icon dropdown -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img :src="pImage3" class="imgMini">
+                Meny
+              </a>
+              <ul class="dropdown-menu gradient-custom3 bg-black dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li>
+
+                    <router-link class="link dropdown-item" to="/" exact><img :src="pImage3" class="imgMini">Home</router-link>
+
+                  <!-- <a class="dropdown-item" href="#">
+                    <router-link class="link dropdown-item" to="/" exact><img :src="pImage" class="imgMini">Home</router-link>
+                  </a> -->
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+
+                <li v-if="!loggedIn">
+                  <router-link class="link dropdown-item" to="/signin"><img :src="pImage4" class="imgMini">Login</router-link>
+                </li>
+                <li v-if="!loggedIn">
+                  <router-link class="link dropdown-item" to="/signup"><img :src="pImage5" class="imgMini">Sign up</router-link>
+                </li>
+                <li>
+                  <router-link class="link dropdown-item" to="/orders" exact><img :src="pImage6" class="imgMini">Orders</router-link>
+                </li>
+                <li>
+                  <router-link class="link dropdown-item" to="/products" exact><img :src="pImage7" class="imgMini">Products</router-link>
+                </li>
+                <li v-if="loggedIn">
+                  <hr class="dropdown-divider" />
+                </li>
+                <li v-if="loggedIn">
+                    <a href="#" class="link dropdown-item" @click="signOut"><img :src="pImage" class="imgMini">Log out</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <router-link class="link d-flex basketDiv" to="/cart" exact>
+          <i class="fas fa-shopping-cart basket">  </i>
+          <div :class="{basketShow: !populate}" class="basketCount">{{count}}</div>
+          <div :class="{basketShow: populate}" class="basketInv">{{count}}</div>
+        </router-link> 
+
+      </div>
     </div>
   </nav>
 </template>
@@ -37,6 +92,24 @@ export default {
     },
     pImage: function() {
       return require(`@/assets/img/logo3.png`)
+    },
+    pImage2: function() {
+      return require(`@/assets/img/buffy-bloody.jpeg`)
+    },
+    pImage3: function() {
+      return require(`@/assets/img/superman.png`)
+    },
+    pImage4: function() {
+      return require(`@/assets/img/belle.png`)
+    },
+    pImage5: function() {
+      return require(`@/assets/img/daenerys.png`)
+    },
+    pImage6: function() {
+      return require(`@/assets/img/cobain.png`)
+    },
+    pImage7: function() {
+      return require(`@/assets/img/sauron.png`)
     },
   },
   methods: {
@@ -56,24 +129,24 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
     background: #000000;
     color: #fff;
     margin:0;
     padding-left: 0rem;
-    padding-right: 2rem;
-    height: 100px;
+    padding-right: 0.5rem;
+    height: 70px;
   }
   .navLeft {
     display: flex;
-    width: 40rem;
-    padding-left: 1rem;
+    /* width: 40rem; */
+    padding-left: 0.5rem;
   }
   .navLeftText {
-    display: inline-block;
+    display: flex;
     margin: auto;
     justify-content: start;
     flex:1;
+    /* padding-left: 1rem; */
     
   }
   .navRight {
@@ -90,7 +163,7 @@ export default {
   .link {
     color: #fff;
     text-decoration: none;
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem;
     display: inline-block;
     position: relative;
   }
@@ -98,14 +171,15 @@ export default {
     color: #a5a5a5;
   }
 
-  .link.router-link-active::after {
+  /* .link.router-link-active::after {
     content: '';
     position: absolute;
     border-bottom: 2px solid #00fdfd;
     left: 1rem;
     bottom: 1.2rem;
     right: 1.7rem;
-  }
+  } */
+
   .basket {
     display: flex;
     align-items: center;
@@ -113,29 +187,70 @@ export default {
   }
 
   .basketDiv {
+    font-size:0.7rem;
     padding: 0;
   }
 
   .basketCount {
-    display: inline-block;
+    display: flex;
     background: red;
     border-radius:15px;
-    padding:0.2rem;
+    padding:0.1rem;
     margin: auto;
     margin-left: -0.2rem;
-    /* margin-bottom: 1rem; */
-    min-width: 2rem;
+    min-width: 1.2rem;
+    min-height: 1.2rem;
+    justify-content: center;
     align-items: center;
-    text-align: center;
-    /* height: 2rem; */
   }
+  .basketInv {
+    margin-left: -0.2rem;
+    min-width: 1.2rem;
+    min-height: 1.2rem;
+    visibility: hidden;
+  }
+
   .basketShow {
       display:none
   }
 
   .imgStyle {
+    height:70px;
+  }
+  .imgMini {
     /* width: 30%; */
+    width:30px;
+    padding-right:0.4rem;
+  }
+
+  div {
+    font-size: 0.5rem;
+  }
+  a {
+    font-size: 0.6rem;
+  }
+
+  @media (min-width: 640px) {
+
+    div, a {
+    font-size: 0.7rem;
+  }
+}
+
+
+  @media (min-width: 960px) {
+  .imgStyle {
     height:100px;
   }
+  nav {
+    height: 100px;
+    padding-right: 1rem;
+  }
+    div, a {
+    font-size: 0.8rem;
+  }
+}
+
+
 </style>
 

@@ -4,13 +4,13 @@
       <div class="mt-3 mb-3 d-flex justify-content-between" >
         <form>
             <div class="d-flex">
-              <input class= "form-control mx-2 searchStyle" type="text" placeholder="Search..." v-model="searchVal" @keyup="search(searchVal)">        
-              <button @click.prevent="clearFilter" class="btn btn-info mx-2 px-3 w-100 py-2 bg-primary">Clear Filter</button>
+              <input class= "form-control mx-2" type="text" placeholder="Search..." v-model="searchVal" @keyup="search(searchVal)">        
+              <button @click.prevent="clearFilter" class="btn btn-info btnFilter mx-1 py-1 bg-info">reset</button>
             </div>
         </form>
         <div class="buttons d-flex justify-content-between">
-          <button @click="changeComp('Grid')" class="btn btn-info px-3 py-2 bg-primary"><i class="fa-th-large"></i></button>
-          <button @click="changeComp('List')" class="btn btn-info px-3 py-2 mx-2 bg-primary"><i class="fas fa-list"></i></button>
+          <button @click="changeComp('Grid')" class="btn btn-info px-1 py-1 bg-info"><i class="fa-th-large"></i></button>
+          <button @click="changeComp('List')" class="btn btn-info px-1 py-1 mx-1 bg-info"><i class="fas fa-list"></i></button>
         </div>
       </div>
       <div class="content">
@@ -106,8 +106,21 @@ export default {
     width: 3rem;
   }
 
-  .searchStyle {
+  /* .searchStyle {
     width: 11rem;
-  }
+  } */
+
+.form-control {
+  /* padding: 0; */
+  height: 1.7rem;
+  font-size: 0.6rem;
+}
+
+.btnFilter {
+  width:6rem;
+  font-size: 0.5rem;
+  height:1.7rem;
+  color: white;
+}
 
 </style>

@@ -2,12 +2,12 @@
   <div class="contain">
     
       <div class="container style404 w-75">
-        <h1>Welcome to Funko store</h1>
+        <h2 class="text-center">Welcome to Funko store</h2>
         <div class="links d-flex justify-content-center my-2">
           <p class="mb-3 text-center">Here at Funko Store we would like to think of ourselves as your favorite friendly Funko-Pop resource. We are prepared to go the extra mile for you, and rest assured we will put in plenty of extra effort to ensure that we always keep you up to date with the latest hype and releases. Like you we understand the potential value of collectibles, and the pleasure and excitement that collecting can bring. We intend to do our very best to provide you with the highest quality service, and we also hope you will find our sortiment of both rare and regular Funko-Pops to your satisfaction. Please sign in already to start browsing our extensive selection of Funko Pops!</p>
           <div v-if="!loggedIn">
-            <p>Already a member? <router-link to="/signin">Login</router-link></p>
-            <p>Not a member? <router-link to="/signup">Sign up</router-link></p>
+            <p class="text-center">Already a member? <router-link to="/signin">Login</router-link></p>
+            <p class="text-center">Not a member? <router-link to="/signup">Sign up</router-link></p>
           </div>
         </div>
         <!-- <p>Please log in!</p> -->
@@ -38,7 +38,7 @@ export default {
 
     .imgStyle {
     padding-top: 2rem;
-    width: 30%;
+    width: 140px;
   }
 
   .style404 {
@@ -50,4 +50,19 @@ export default {
     margin: auto;
     padding-top: 5rem;
   }
+
+  p {
+    font-size: 0.5rem;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+
+@media (min-width: 960px) {
+    .imgStyle {
+    padding-top: 2rem;
+    width: 240px;
+  }
+}
+
 </style>

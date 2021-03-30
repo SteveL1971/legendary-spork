@@ -3,15 +3,15 @@
     <div v-if="loggedIn" class="list card">
       <div class="cardBox d-flex justify-content-between bg-white my-2 px-3">
         <div class="textStyle">
-          <div class="row gradient-custom">
-          <h4 class="col-lg-2 col-sm-3 align-text-center text-black">Customer id:</h4>
-          <p class="col-lg-10 col-sm-9 headerStyle text-black"> {{ loggedInUser.id }} </p>
-          <h4 class="col-lg-2 col-sm-3 align-text-center text-black">Customer Name:</h4>
-          <p class="col-lg-10 col-sm-9 headerStyle text-black"> {{ loggedInUser.firstName }} {{ loggedInUser.lastName }}  </p>
-          <h4 class="col-lg-2 col-sm-3 align-text-center text-black">Customer Email:</h4>
-          <p class="col-lg-10 col-sm-9 headerStyle text-black"> {{ loggedInUser.email }}  </p>
-          <h4 class="col-lg-2 col-sm-3 align-text-center text-black">Number of orders:</h4>
-          <p class="col-lg-10 col-sm-9 headerStyle text-black"> {{ filterOrdersByCustomerId(loggedInUser.id).length }}  </p>
+          <div class="row gradient-custom p-2">
+          <h4 class="col-3 headerH4">id:</h4>
+          <p class="col-9 headerP"> {{ loggedInUser.id }} </p>
+          <h4 class="col-3 headerH4">Name:</h4>
+          <p class="col-9 headerP"> {{ loggedInUser.firstName }} {{ loggedInUser.lastName }}  </p>
+          <h4 class="col-3 headerH4">Email:</h4>
+          <p class="col-9 headerP"> {{ loggedInUser.email }}  </p>
+          <h4 class="col-3 headerH4">Orders:</h4>
+          <p class="col-9 headerP"> {{ filterOrdersByCustomerId(loggedInUser.id).length }}  </p>
           </div>
         </div>
       </div>
@@ -95,20 +95,36 @@ export default {
     padding: 0;
   } */
 
-  h4 {
+  /* h4 {
     font-weight: 400;
     font-size: 0.7rem;
     padding: 0px;
     margin: auto;
     text-align: left;
     color: white;
-    padding-left: 0.5rem;
     line-height: 1.7;
-  }
+  } */
 
   .headerStyle {
     font-size: 0.9rem;
     font-weight: 600;
+  }
+  .headerP {
+    color: black;
+    font-size: 0.5rem;
+    font-weight: 500;
+    margin: auto;
+    text-align: left;
+    line-height: 2;
+
+  }
+  .headerH4 {
+    color: black;
+    font-size: 0.5rem;
+    font-weight: 600;
+    margin: auto;
+    text-align: left;
+    line-height: 2;
   }
   .grid {
     padding-top: 1rem;
@@ -121,5 +137,14 @@ export default {
     color: #fff;
     margin-bottom: 4rem;
   }
+
+@media (min-width: 960px) {
+  .orderP {
+    padding-left: 1.6rem;
+  }
+  .orderP, .orderH5, .headerH4, .headerP {
+    font-size: 0.7rem;
+  }
+}
 
 </style>

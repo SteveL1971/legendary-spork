@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-5">
+  <div class="pt-5">
     <sign-in />
   </div>
 </template>
