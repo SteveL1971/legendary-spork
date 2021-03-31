@@ -52,11 +52,14 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['changeComp', 'search', 'resetFilter']),
+    ...mapActions(['changeComp', 'search', 'resetFilter', 'checkUser']),
     clearFilter() {
       this.resetFilter()
       this.searchVal = ''
     },
+    created() {
+      this.checkUser()
+    }
   }
 
 }

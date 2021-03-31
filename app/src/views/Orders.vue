@@ -11,10 +11,11 @@ import Orders from '../components/Orders/Orders'
 export default {
   components: { Orders },
   methods: {
-    ...mapActions(['getOrders'])
+    ...mapActions(['getOrders' , 'checkUser'])
   },
   created() {
     this.getOrders() 
+    this.checkUser()
   }
 
 }

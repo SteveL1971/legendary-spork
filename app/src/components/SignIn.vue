@@ -47,7 +47,6 @@ export default {
     // },
 
     onSubmit() {
-      console.log('here ...')
       if(this.email !== '' && this.password !== '') {
         let user = {
           email: this.customerEmail,

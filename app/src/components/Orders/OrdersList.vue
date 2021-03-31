@@ -73,7 +73,6 @@ export default {
   },
   computed: {
     pImage: function () {
-      // console.log(this.index)
       return require(`@/assets/img/` + this.product.cart[1].img)
     },
     ...mapGetters(['order' , 'loggedInUser'])

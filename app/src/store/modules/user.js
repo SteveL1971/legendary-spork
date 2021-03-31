@@ -29,7 +29,8 @@ export default {
           id: decoded.id,
           firstName: decoded.firstName,
           lastName: decoded.lastName,
-          email: decoded.email
+          email: decoded.email,
+          exp: decoded.exp
         }
         state.loggedInFirstName=decoded.firstName
       } else {
@@ -47,19 +48,33 @@ export default {
       try {
         let token = localStorage.getItem('token')
         if(token) {
-          state.userToken = token
-          state.loggedIn = true
-          var decoded = jwt_decode(token)
-          state.loggedInUser= {
-            id: decoded.id,
-            firstName: decoded.firstName,
-            lastName: decoded.lastName,
-            email: decoded.email
+          const decoded = jwt_decode(token)
+          if (decoded.exp < new Date().getTime()/1000) {
+            // console.log("EXPIRED");
+            state.userToken = null
+            state.loggedIn = false
+            state.loggedInUser= {
+              id: '',
+              firstName: '',
+              lastName: '',
+              email: ''
+            }
+          } else {
+            // console.log("ACTIVE")
+            state.userToken = token
+            state.loggedIn = true
+            state.loggedInUser= {
+              id: decoded.id,
+              firstName: decoded.firstName,
+              lastName: decoded.lastName,
+              email: decoded.email,
+              exp: decoded.exp
+            }
+            state.loggedInUser.id=decoded.id
+            state.loggedInUser.firstName=decoded.firstName
+            state.loggedInUser.lastName=decoded.lastName
+            state.loggedInUser.email=decoded.email
           }
-          state.loggedInUser.id=decoded.id
-          state.loggedInUser.firstName=decoded.firstName
-          state.loggedInUser.lastName=decoded.lastName
-          state.loggedInUser.email=decoded.email
         } else {
           state.userToken = null
           state.loggedIn = false

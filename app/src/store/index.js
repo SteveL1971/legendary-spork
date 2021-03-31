@@ -24,6 +24,7 @@ export default new Vuex.Store({
     count: 0,
     totalPrice: 0, 
     populate: false,
+    orderCompleted: false
   },
   getters: {
     taxedProducts: state => {
@@ -44,6 +45,7 @@ export default new Vuex.Store({
     populate: state => state.populate,
     product: state => state.product,
     searchVal: state => state.searchVal,
+    orderCompleted:state => state.orderCompleted,
 
     filteredProducts: (state) => {
       // return state.products.filter(product => product.name.toLowerCase().match(state.searchVal.toLowerCase()))
@@ -117,10 +119,7 @@ export default new Vuex.Store({
     },
 
     RESET_FILTER: (state) => {
-      console.log('pop' , state.populate , state.cart )
       state.searchVal = ''
-      console.log('pop' , state.populate , state.cart )
-      // vue.Products.data.searchVal = ''
     },
 
     RESET_STORE: (state) => {
@@ -135,6 +134,9 @@ export default new Vuex.Store({
 
     CATEGORY_FILTER: (state, val) => {
       state.searchVal = val
+    },
+    ORDER_COMPLETE_FALSE: (state) => {
+      state.orderCompleted = false
     },
 
     SAVE_ORDER: async (state, orders) => {
@@ -178,6 +180,7 @@ export default new Vuex.Store({
       state.count = 0
       state.totalPrice = 0
       state.populate=false 
+      state.orderCompleted=true
       }
     },
 
@@ -231,6 +234,9 @@ export default new Vuex.Store({
     },
     resetStore: ({commit}) => {
       commit('RESET_STORE')
+    },
+    orderCompleteFalse: ({commit}) => {
+      commit('ORDER_COMPLETE_FALSE')
     },
   },
   modules: {

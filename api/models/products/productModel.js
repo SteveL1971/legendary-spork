@@ -46,11 +46,10 @@ exports.createProduct = (req, res) => {
 
         name:   req.body.name,
         series:  req.body.series,
+        desc: req.body.desc,
         number:   req.body.number,
         price:  req.body.price,
-        img:  req.body.img,
-        desc: req.body.desc
-
+        img:  req.body.img
       })
 
       newFunkopop.save()

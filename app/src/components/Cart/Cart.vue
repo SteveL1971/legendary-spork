@@ -4,9 +4,9 @@
       <div v-if="count>0" class="list">
         <div class="row my-4">
           <div class="col-9 row px-2">
-              <p class="col-9">Number of items in shopping cart: </p>
+              <p class="col-9">Items in shopping cart: </p>
               <p class="col-3">{{count}}</p>
-              <p class="col-9">Total value of shopping cart: </p>
+              <p class="col-9">Value of shopping cart: </p>
               <p class="col-3">{{totalPrice}} kr</p>  
           </div>
           <div class="col-3 d-flex justify-content-center align-items-center">
@@ -14,6 +14,20 @@
           </div>
         </div>
         <cart-list v-for="product in cart" :key="product.id" class="card" :product="product" />
+      </div>
+      <div v-if="count==0 && !orderCompleted"  class="list">
+          <div class="container style404 w-75">
+            <h2 class="text-center pb-3">Your shopping basket appears to be empty!</h2>
+            <p class="mb-3 text-center">No worries! Head right over to the <router-link to="/products">product</router-link> section to start browsing Funko Pops!</p>
+          <img :src="pImage" class="imgStyle">
+        </div>
+      </div>
+      <div v-if="count==0 && orderCompleted"  class="list">
+          <div class="container style404 w-75">
+            <h2 class="text-center pb-3">Thank you for your order!</h2>
+            <p class="mb-3 text-center">We hope you will be completely satisfied with your purchase! You can see this order together with all your previous transactions <router-link to="/orders">here</router-link>.</p>
+          <img :src="pImage" class="imgStyle">
+        </div>
       </div>
     </div>
     <div v-if="!loggedIn">
@@ -37,7 +51,6 @@ import { mapActions, mapGetters } from 'vuex'
 import CartList from './CartList'
 export default {
   components: {
-
     CartList
   },
   data() {
@@ -46,18 +59,26 @@ export default {
     }
   },
     computed: {
-    ...mapGetters(['cart', 'count', 'loggedIn', 'totalPrice', 'loggedInUser']),
+    ...mapGetters(['cart', 'count', 'loggedIn', 'totalPrice', 'loggedInUser', 'orderCompleted']),
         pImage: function() {
       return require(`@/assets/img/gogo.jpg`)
     },
   },
   methods: {
-    ...mapActions(['saveOrder', 'saveOrderId']),
+    ...mapActions(['saveOrder', 'saveOrderId', 'orderCompleteFalse']),
+  },
+  destroyed(){
+    this.orderCompleteFalse()
   }
 }
 </script>
 
 <style scoped>
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 500;
+  }
   .grid {
     padding-top: 1rem;
     display: grid;
