@@ -88,43 +88,16 @@ export default {
     padding-top: 5rem;
   }
 
-  /* p {
-    color: black;
-    font-size: 1rem;
-    font-weight: 200;
-    padding: 0;
-  } */
-
-  /* h4 {
-    font-weight: 400;
-    font-size: 0.7rem;
-    padding: 0px;
-    margin: auto;
-    text-align: left;
-    color: white;
-    line-height: 1.7;
-  } */
-
   .headerStyle {
     font-size: 0.9rem;
     font-weight: 600;
   }
+  
   .headerP {
     color: black;
-    font-size: 0.5rem;
-    font-weight: 500;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
-
   }
   .headerH4 {
     color: black;
-    font-size: 0.5rem;
-    font-weight: 600;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
   }
   .grid {
     padding-top: 1rem;
@@ -138,7 +111,7 @@ export default {
     margin-bottom: 4rem;
   }
 
-@media (min-width: 960px) {
+@media (min-width: 640px) {
   .orderP {
     padding-left: 1.6rem;
   }

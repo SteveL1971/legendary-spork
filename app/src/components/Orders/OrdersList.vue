@@ -123,38 +123,44 @@ export default {
     font-size: 0.9rem;
     font-weight: 600;
   }
+
   .nameP {
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: white;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
-  }
-  .nameH4 {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: white;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
-  }
-  .headerP {
-    color: black;
-    font-size: 0.5rem;
-    font-weight: 500;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
-  }
-  .headerH4 {
-    color: black;
-    font-size: 0.5rem;
-    font-weight: 600;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
-  }
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: white;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+}
+
+.nameH4 {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: white;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+}
+
+  
+
+.headerP {
+  color: black;
+  font-size: 0.5rem;
+  font-weight: 500;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+}
+
+.headerH4 {
+  color: black;
+  font-size: 0.5rem;
+  font-weight: 600;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+}
   .orderP {
     color: black;
     font-size: 0.5rem;
@@ -177,26 +183,6 @@ export default {
     display: flex;
     margin: auto;
   }
-
-  /* h5, p {
-    font-weight: 400;
-    padding: 0px;
-    margin: auto;
-    text-align: left;
-    color:rgb(99, 94, 94);
-    padding-left: 0.5rem;
-    line-height: 1.7;
-  } */
-
-  /* h4 {
-    font-weight: 400;
-    padding: 0px;
-    margin: auto;
-    text-align: left;
-    color: white;
-    padding-left: 0.5rem;
-    line-height: 1.7;
-  } */
 
   p {
     padding: 0;
@@ -223,7 +209,7 @@ export default {
     justify-content: between;
   }
 
-  @media (min-width: 960px) {
+  @media (min-width: 640px) {
 
   .orderP, .orderH5, .headerH4, .headerP {
     font-size: 0.7rem;

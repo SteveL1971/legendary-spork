@@ -4,12 +4,12 @@
       <div v-if="count>0" class="list">
         <div class="row my-4">
           <div class="col-9 row px-2">
-              <p class="col-9">Items in shopping cart: </p>
-              <p class="col-3">{{count}}</p>
-              <p class="col-9">Value of shopping cart: </p>
-              <p class="col-3">{{totalPrice}} kr</p>  
+              <p class="col-9 col-sm-4">Items in shopping cart: </p>
+              <p class="col-3 col-sm-8">{{count}}</p>
+              <p class="col-9 col-sm-4">Value of shopping cart: </p>
+              <p class="col-3 col-sm-8">{{totalPrice}} kr</p>  
           </div>
-          <div class="col-3 d-flex justify-content-center align-items-center">
+          <div class="col-3 d-flex px-2 justify-content-end align-items-center">
             <button @click="saveOrderId(loggedInUser.id)" class="btn btn-primary">Save cart</button>
           </div>
         </div>
@@ -37,7 +37,6 @@
           <p>Already a member? <router-link to="/signin">Login</router-link></p>
           <p>Not a member? <router-link to="/signup">Sign up</router-link></p>
         </div>
-        <!-- <p>Please log in!</p> -->
         <img :src="pImage" class="imgStyle">
       </div>
     </div>
@@ -53,19 +52,15 @@ export default {
   components: {
     CartList
   },
-  data() {
-    return {
-      hmm: ''
-    }
-  },
-    computed: {
+
+  computed: {
     ...mapGetters(['cart', 'count', 'loggedIn', 'totalPrice', 'loggedInUser', 'orderCompleted']),
         pImage: function() {
       return require(`@/assets/img/gogo.jpg`)
     },
   },
   methods: {
-    ...mapActions(['saveOrder', 'saveOrderId', 'orderCompleteFalse']),
+    ...mapActions(['saveOrderId', 'orderCompleteFalse']),
   },
   destroyed(){
     this.orderCompleteFalse()
@@ -99,13 +94,18 @@ export default {
     width: 30%;
   }
 
-    .headerP {
+  h5, p {
+  font-weight: 400;
+  font-size: 0.6rem;
+  padding: 0px;
+  margin: auto;
+  text-align: left;
+  color:rgb(99, 94, 94);
+  line-height: 1.7;
+}
+
+  .headerP {
     color: black;
-    font-size: 0.5rem;
-    font-weight: 500;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
   }
 
   .style404 {
@@ -125,5 +125,16 @@ export default {
     width:4rem;
     height:1.5rem;
   }
+
+    @media (min-width: 960px) {
+
+  p {
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  .imgStyle {
+    width:90px;
+  }
+}
 
 </style>

@@ -3,8 +3,8 @@
     <div class="textStyle d-flex justify-content-between">
       <div class="textLayout mb-2">
         <div class="row mx-2 gradient-custom">
-          <h4 class="col-3 align-text-center headerH4">Name:</h4>
-          <p class="col-9 headerStyle headerP"> {{ product.name }}</p>
+          <h4 class="col-3 px-2 align-text-center headerH4">Name:</h4>
+          <p class="col-9 headerP"> {{ product.name }}</p>
         </div>
         <div class="row mt-3 mx-2">
           <h5 class="col-3 textH5">Id:</h5>
@@ -27,13 +27,11 @@
           <p class="col-9 textP"> {{ Math.round(product.price*1.2) }}kr <span class="smallText">incl VAT</span></p>
         </div>
         <div class="mt-2 mx-2 py-2 descStyle">
-          <h5 class="textH5 descTextStyle">Description: </h5>
-          <!-- <p class="textP">Magna sint duis minim officia eu tempor dolore commodo proident. Minim veniam velit cillum dolore cillum nostrud labore magna mollit adipisicing irure pariatur. Consequat voluptate cillum ea enim mollit. Commodo cupidatat velit sit cillum ullamco. Enim nisi aliqua do irure eiusmod tempor do velit excepteur excepteur magna duis. Duis nulla adipisicing laborum velit mollit dolor sunt pariatur amet do et aliqua laborum minim.</p>   -->
+          <h5 class="textH5 descTextStyle pb-2">Description: </h5>
           <p class="textP">{{ product.desc }}</p>  
         </div>
       </div>
       <div class="d-flex align-items-center justify-content-center">
-      <!-- <img :src="pImage" class="imgStyle" :alt="product.name"> -->
         <img :src=product.img class="imgStyle" :alt="product.name">
       </div>
       <div class="d-flex justify-content-center my-3">
@@ -88,12 +86,10 @@ export default {
     padding-top: 1rem;
   }
 
-    .imgStyle {
+  .imgStyle {
     width:240px;
-    /* border: 1px solid black; */
-    /* border-radius: 5px; */
-    /* box-shadow:6px 3px 3px rgba(0, 0, 0, 0.425); */
   }
+
   .imgBox {
     width: 90%;
     border: 1px solid #000;
@@ -121,16 +117,25 @@ export default {
     padding-right: 0.5rem;
     line-height: 2;
   }
-  h4 {
-    font-weight: 400;
-    font-size: 0.7rem;
-    padding: 0px;
-    margin: auto;
-    text-align: left;
-    color: white;
-    padding-left: 0.5rem;
-    line-height: 2;
-  }
+
+  .headerP {
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+}
+
+.headerH4 {
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+}
+
   p {
     color: black;
     font-size: 1rem;
@@ -143,12 +148,10 @@ export default {
     font-weight: 600;
   }
   .textLayout {
-    /* background: cornsilk; */
     flex:0.95;
     border: 0;
     margin: 0;
     padding: 0;
-    /* border-right: 2px solid #007bff50; */
   }
 
   .row {
@@ -163,37 +166,20 @@ export default {
   }
 
   .textP {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     font-weight: 500;
-    color:rgb(99, 94, 94);
+    color:black;
     margin: auto;
     text-align: left;
     line-height: 2;
   }
   .textH5 {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     font-weight: 600;
     color:rgb(99, 94, 94);
     margin: auto;
     text-align: left;
     line-height: 2;
   }
-  .headerP {
-    color: white;
-    font-size: 0.5rem;
-    font-weight: 500;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
-
-  }
-
-  .headerH4 {
-    color: white;
-    font-size: 0.5rem;
-    font-weight: 600;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
-  }
+  
 </style>

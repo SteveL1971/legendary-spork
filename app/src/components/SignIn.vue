@@ -39,20 +39,12 @@ export default {
   methods: {
     ...mapActions(['login']),
 
-    // ...mapActions(['signInCustomer' , 'login']),
-    // handleSubmit() {
-    //   this.signInCustomer([this.customerEmail, this.customerPassword])
-    //   this.customerEmail = ''
-    //   this.customerPassword = ''
-    // },
-
     onSubmit() {
       if(this.email !== '' && this.password !== '') {
         let user = {
           email: this.customerEmail,
           password: this.customerPassword
         }
-
         let route = this.$route.query.redirect
         this.login({user, route})
       }
@@ -61,9 +53,7 @@ export default {
     handleChange() {
       this.customerEmail = this.$refs.email.value
     }
-
-  }
-  
+  } 
 }
 </script>
 
@@ -78,25 +68,24 @@ export default {
   display:flex;
   justify-content: center;
   margin:auto;
-  /* width: 500px; */
 }
 
-      .orderP {
-    color: black;
-    font-size: 0.5rem;
-    font-weight: 500;
-    margin: auto;
-    text-align: left;
-    line-height: 1.7;
+.orderP {
+  color: black;
+  font-size: 0.5rem;
+  font-weight: 500;
+  margin: auto;
+  text-align: left;
+  line-height: 1.7;
+}
 
-  }
-  .orderH5 {
-    color: white;
-    font-size: 0.6rem;
-    font-weight: 600;
-    text-align: left;
-    line-height: 1.7;
-  }
+.orderH5 {
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-align: left;
+  line-height: 1.7;
+}
 
 
 </style>

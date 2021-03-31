@@ -6,23 +6,13 @@
           <img :src="pImage" class="imgStyle">
         </router-link>
         <div v-if="loggedIn" class="navLeftText">
-          <div class="px-2">Hi {{ loggedInUser.firstName }}!</div>
+          <div class="">Hi {{ loggedInUser.firstName }}!</div>
         </div>
       </div>
     </div>
 
     <div class="">
       <div class="navRight">
-        <!-- <router-link class="link" to="/" exact>Home</router-link>
-        <div v-if="!loggedIn"><router-link class="link" to="/signin">Login</router-link></div>
-        <div v-if="!loggedIn"><router-link class="link" to="/signup">Sign up</router-link></div>
-        <router-link class="link" to="/orders" exact>Orders</router-link>
-        <router-link class="link" to="/products" exact>Products</router-link>
-        <router-link class="link d-flex basketDiv" to="/cart" exact>
-          <i class="fas fa-shopping-cart basket">  </i>
-          <div :class="{basketShow: !populate}" class="basketCount">{{count}}</div>
-        </router-link> -->
-
         <div class="container-fluid">
           <ul class="navbar-nav">
             <!-- Icon dropdown -->
@@ -40,15 +30,9 @@
               </a>
               <ul class="dropdown-menu gradient-custom3 bg-black dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li>
-
                     <router-link class="link dropdown-item" to="/" exact><img :src="pImage3" class="imgMini">Home</router-link>
-
-                  <!-- <a class="dropdown-item" href="#">
-                    <router-link class="link dropdown-item" to="/" exact><img :src="pImage" class="imgMini">Home</router-link>
-                  </a> -->
                 </li>
                 <li><hr class="dropdown-divider" /></li>
-
                 <li v-if="!loggedIn">
                   <router-link class="link dropdown-item" to="/signin"><img :src="pImage4" class="imgMini">Login</router-link>
                 </li>
@@ -65,7 +49,7 @@
                   <hr class="dropdown-divider" />
                 </li>
                 <li v-if="loggedIn">
-                    <a href="#" class="link dropdown-item" @click="signOut"><img :src="pImage" class="imgMini">Log out</a>
+                    <a href="#" class="link dropdown-item" @click="signOut"><img :src="pImage4" class="imgMini">Log out</a>
                 </li>
               </ul>
             </li>
@@ -146,7 +130,7 @@ export default {
     margin: auto;
     justify-content: start;
     flex:1;
-    /* padding-left: 1rem; */
+    padding-left: 0.5rem;
     
   }
   .navRight {
@@ -167,9 +151,13 @@ export default {
     display: inline-block;
     position: relative;
   }
-  .link:hover {
-    color: #a5a5a5;
+
+  .nav-link {
+    color: white;
   }
+  /* .link:hover {
+    color: #a5a5a5;
+  } */
 
   /* .link.router-link-active::after {
     content: '';
@@ -187,7 +175,7 @@ export default {
   }
 
   .basketDiv {
-    font-size:0.7rem;
+    font-size:1rem;
     padding: 0;
   }
 
@@ -198,15 +186,16 @@ export default {
     padding:0.1rem;
     margin: auto;
     margin-left: -0.2rem;
-    min-width: 1.2rem;
-    min-height: 1.2rem;
+    width: 1.3rem;
+    height: 1.3rem;
     justify-content: center;
     align-items: center;
+    font-size: 0.7rem;
   }
   .basketInv {
     margin-left: -0.2rem;
-    min-width: 1.2rem;
-    min-height: 1.2rem;
+    min-width: 1.3rem;
+    min-height: 1.3rem;
     visibility: hidden;
   }
 

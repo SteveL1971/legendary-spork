@@ -1,8 +1,7 @@
 <template>
   <div>
-    <!-- <div class="cardBox d-flex justify-content-between bg-white mb-2 row"> -->
     <div class="cardBox bg-white mb-2 py-2 row">
-      <div class="textStyl col-8 px-1">
+      <div class="col-8 px-1">
         <div class="row gradient-custom">
           <h4 class="col-3 align-text-center headerH4">Name:</h4>
           <p class="col-9 headerStyle headerP"> {{ product.name }}</p>
@@ -33,10 +32,9 @@
         <div class="rightStyle">
           <router-link :to="'/product/details/' + product._id" class="card alignCenter">
             <img :src=product.img class="imgStyle" :alt="product.name">
-            <!-- <img :src="pImage" class="imgStyle" :alt="product.name"> -->
           </router-link>
           <div class="">
-              <h5 class="text-center">Amount: {{ product.amount }}</h5>
+              <h5 class="text-center orderH5 mt-1">Amount: {{ product.amount }}</h5>
           </div>
         </div>
       </div>
@@ -52,29 +50,29 @@ export default {
   methods: {
     ...mapActions(['removeCartItem', 'addToCart', 'removeFromCart'])
   },
-  computed: {
-    pImage: function() {
-      return require(`@/assets/img/` + this.product.img)
-    },
-  }
 }
 </script>
 
 <style scoped>
+
+  .bg-white {
+    background-color: white;
+  }
   .textStyle {
-    /* flex: 1; */
     border: 2px solid #007bff50;
     color: black;
-    /* background-color: #fff; */
     height:130px;
     border:0;
-    /* width:100%; */
   }
 
   .cardBox {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.404);
     border-radius: 5px;
     background: white;
+    width:96%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
   }
 
   .imgStyle {
@@ -106,43 +104,11 @@ export default {
     font-weight: 300;
   }
 
-  /* h5, p {
-    font-weight: 400;
-    font-size: 0.7rem;
-    padding: 0px;
-    margin: auto;
-    text-align: left;
-    color:rgb(99, 94, 94);
-    padding-left: 0.5rem;
-    line-height: 1.7;
-  }
-  h4 {
-    font-weight: 400;
-    font-size: 0.7rem;
-    padding: 0px;
-    margin: auto;
-    text-align: left;
-    color: white;
-    padding-left: 0.5rem;
-    line-height: 1.7;
-  }
-  p {
-    color: black;
-    font-size: 1rem;
-    font-weight: 500;
-  } */
-
   .headerStyle {
     color: white;
     font-size: 1.1rem;
     font-weight: 600;
   }
-
-  /* .btn {
-    margin: 0px;
-    padding: 8px;
-    width: 3rem;
-  } */
 
   .btn {
     display:flex;
@@ -165,39 +131,24 @@ export default {
     padding:0;
   }
 
-    .nameP {
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: white;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
-  }
-  .nameH4 {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: white;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
-  }
-  .headerP {
-    color: black;
-    font-size: 0.5rem;
-    font-weight: 500;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
+.headerP {
+  color: black;
+  font-size: 0.5rem;
+  font-weight: 600;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+}
 
-  }
-  .headerH4 {
-    color: black;
-    font-size: 0.5rem;
-    font-weight: 600;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
-  }
+.headerH4 {
+  color: black;
+  font-size: 0.5rem;
+  font-weight: 600;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+}
+
   .orderP {
     color: black;
     font-size: 0.5rem;
@@ -216,6 +167,18 @@ export default {
     line-height: 1.7;
   }
 
+  .hmm {
+    margin:auto;
+  }
 
+    @media (min-width: 640px) {
+
+  .orderP, .orderH5, .headerH4, .headerP {
+    font-size: 0.7rem;
+  }
+  .imgStyle {
+    width:90px;
+  }
+}
 
 </style>

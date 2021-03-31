@@ -1,12 +1,11 @@
 <template>
     <div class="cardBox listItem">
       <div class="row w-100">
-        
         <div class="row">
           <div class="d-flex col-9">
             <div class="textStyle">
               <div class="row gradient-custom mx-2">
-                <h4 class="col-3 align-text-center nameH4">Name:</h4>
+                <h4 class="col-3 align-text-center px-1 nameH4">Name:</h4>
                 <p class="col headerStyle nameP"> {{ product.name }}</p>
               </div>
               <div class="row mt-2">
@@ -28,18 +27,15 @@
             </div>
           </div>
           <div class="imgBox col-3">
-            <router-link :to="'/product/details/' + product._id" class="row">
+            <router-link :to="'/product/details/' + product._id" class="row imgCenter">
             <div class="d-flex justify-content-center"><img :src=product.img class="imgStyle" :alt="product.name"></div>
             </router-link>
+            <div class="buttonCenter">
             <button @click="addToCart(product)" class="btn btn-info"><i class="fas fa-cart-plus"></i></button>
+            </div>
           </div>
-        </div>
-        
+        </div> 
       </div>
-
-      <!-- <div class="buttons">
-        <button @click="addToCart(product)" class="btn btn-info"><i class="fas fa-cart-plus"></i></button>
-      </div> -->
     </div>
  
 
@@ -61,6 +57,7 @@ export default {
 </script>
 
 <style scoped>
+
   .textStyle {
     flex: 1;
     border: 2px solid #007bff50;
@@ -107,16 +104,7 @@ export default {
     padding-left: 0.5rem;
     line-height: 2;
   }
-  h4 {
-    font-weight: 400;
-    font-size: 0.7rem;
-    padding: 0px;
-    margin: auto;
-    text-align: left;
-    color: white;
-    padding-left: 0.5rem;
-    line-height: 2;
-  }
+
   p {
     color: black;
     font-size: 0.8rem;
@@ -159,38 +147,31 @@ export default {
     padding: 0px;
   }
 
-   .nameP {
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: white;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
-  }
-  .nameH4 {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: white;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
-  }
+.nameP {
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: white;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+  padding: 0rem;
+}
+
+.nameH4 {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: white;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+}
+
   .headerP {
     color: black;
-    font-size: 0.5rem;
-    font-weight: 500;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
-
   }
+
   .headerH4 {
     color: black;
-    font-size: 0.5rem;
-    font-weight: 600;
-    margin: auto;
-    text-align: left;
-    line-height: 2;
   }
   .orderP {
     color: black;
@@ -209,5 +190,30 @@ export default {
     text-align: left;
     line-height: 1.7;
   }
+
+    @media (min-width: 640px) {
+
+  .orderP, .orderH5, .nameH4, .nameP {
+    font-size: 0.7rem;
+    line-height: 1.6;
+    
+  }
+  .imgStyle {
+    width:90px;
+  }
+
+  .imgBox {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+  }
+
+  .imgCenter {
+    flex:3;
+  }
+  .buttonCenter {
+    flex:2;
+  }
+}
 
 </style>

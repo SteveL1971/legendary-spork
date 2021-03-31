@@ -37,7 +37,7 @@ export default {
 
 <style scoped>
 .card {
-  margin: 1rem;
+  margin: 0.5rem;
   background: #fff;
   display: flex;
   justify-content: space-between;

@@ -6,6 +6,7 @@
 </template>
 
 <script>
+
 import { mapActions } from 'vuex'
 import Orders from '../components/Orders/Orders'
 export default {
@@ -17,12 +18,10 @@ export default {
     this.getOrders() 
     this.checkUser()
   }
-
 }
 
 </script>
 
-<style scoped>
-
+<style>
 
 </style>

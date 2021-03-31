@@ -7,14 +7,15 @@
 </template>
 
 <script>
+
 export default {
   computed: {
     pImage: function() {
       return require(`@/assets/img/freddy-krueger.jpg`)
     },
   },
-
 }
+
 </script>
 
 <style scoped>

@@ -109,12 +109,7 @@ export default {
     width: 3rem;
   }
 
-  /* .searchStyle {
-    width: 11rem;
-  } */
-
 .form-control {
-  /* padding: 0; */
   height: 1.7rem;
   font-size: 0.6rem;
 }

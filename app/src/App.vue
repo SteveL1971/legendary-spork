@@ -6,8 +6,10 @@
 </template>
 
 <script>
+
 import { mapActions } from 'vuex'
 import Navbar from './components/Navbar'
+
 export default {
   components: { Navbar },
 
@@ -23,6 +25,7 @@ export default {
 </script>
 
 <style>
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -30,59 +33,90 @@ export default {
   font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 
-  .headerStyle {
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
+.headerStyle {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
 
-  h5, p {
-    font-weight: 400;
-    font-size: 0.6rem;
-    padding: 0px;
-    margin: auto;
-    text-align: left;
-    color:rgb(99, 94, 94);
-    /* padding-left: 0.5rem; */
-    line-height: 1.7;
-  }
-  h4 {
-    font-weight: 400;
-    font-size: 0.6rem;
-    padding: 0px;
-    margin: auto;
-    text-align: left;
-    color: white;
-    padding-left: 0.5rem;
-    line-height: 1.7;
-  }
+.nameP {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: white;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+}
 
-  .textStyle {
-    /* flex: 1; */
-    border: 2px solid #007bff50;
-    color: black;
-    background-color: #fff;
-    /* height:130px; */
-    border:0;
-    width:100%;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-  }
+.nameH4 {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: white;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+}
 
-  .cardBox {
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.404);
-    border-radius: 5px;
-    background: white;
-  }
+.headerP {
+  color: white;
+  font-size: 0.5rem;
+  font-weight: 500;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+}
+
+.headerH4 {
+  color: white;
+  font-size: 0.5rem;
+  font-weight: 600;
+  margin: auto;
+  text-align: left;
+  line-height: 2;
+}
+
+h5, p {
+  font-weight: 400;
+  font-size: 0.7rem;
+  padding: 0px;
+  margin: auto;
+  text-align: left;
+  color:rgb(99, 94, 94);
+  line-height: 1.7;
+}
+
+h4 {
+  font-weight: 400;
+  font-size: 0.7rem;
+  padding: 0px;
+  margin: auto;
+  text-align: left;
+  color: white;
+  padding-left: 0.5rem;
+  line-height: 2;
+}
+
+.textStyle {
+  border: 2px solid #007bff50;
+  color: black;
+  background-color: #fff;
+  border:0;
+  width:100%;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.cardBox {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.404);
+  border-radius: 5px;
+  background: white;
+}
+
 .btn {
-  /* margin: 1rem 0 0 1rem; */
-  /* padding: .5rem .8rem; */
   border-radius: 10px;
   border: none;
   outline: none;
   cursor: pointer;
-  /* height: 2rem;
-  width: 3rem; */
 }
 
 .btn-black {
@@ -160,11 +194,11 @@ export default {
   padding: 0;
 } 
 
-  .alignCenter {
-    display: flex;
-    align-items: center;
-    margin: auto;
-  }
+.alignCenter {
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
 
 @media (min-width: 640px) {
   .contain {
@@ -181,14 +215,6 @@ export default {
     padding: 0;
   }  
 }
-
-/* @media (min-width: 1280px) {
-  .contain {
-    width: 1280px;
-    margin:auto;
-    padding: 0;
-  }  
-} */
 
 </style>
 

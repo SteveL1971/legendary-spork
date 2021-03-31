@@ -1,20 +1,20 @@
 <template>
   <div class="pt-5">
-    <add-customer-form />
-    <!-- <customer-list class="mt-3" /> -->
+    <sign-up/>
   </div>
 </template>
 
 <script>
-import AddCustomerForm from '../components/Customer/AddCustomerForm'
 
-// import CustomerList from '../components/Customer/CustomerList.vue'
+import SignUp from '../components/SignUp'
+
 export default {
   components: {
-    AddCustomerForm,
-    // CustomerList
+    SignUp,
   }
+
 }
+
 </script>
 
 <style>

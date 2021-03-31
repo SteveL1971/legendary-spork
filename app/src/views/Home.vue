@@ -10,7 +10,6 @@
             <p class="text-center">Not a member? <router-link to="/signup">Sign up</router-link></p>
           </div>
         </div>
-        <!-- <p>Please log in!</p> -->
         <img :src="pImage" class="imgStyle">
       </div>
   </div>
@@ -58,10 +57,14 @@ export default {
     font-size: 1rem;
   }
 
-@media (min-width: 960px) {
+@media (min-width: 640px) {
     .imgStyle {
     padding-top: 2rem;
     width: 240px;
+  }
+
+  p {
+    font-size: 0.7rem;
   }
 }
 

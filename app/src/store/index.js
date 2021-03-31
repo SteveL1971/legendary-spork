@@ -138,28 +138,6 @@ export default new Vuex.Store({
     ORDER_COMPLETE_FALSE: (state) => {
       state.orderCompleted = false
     },
-
-    SAVE_ORDER: async (state, orders) => {
-      state.order = orders
-
-      if(state.count>0 && user.state.loggedIn){
-      const orderNumber = (state.order.filter(product => product.customerId == user.state.loggedInUser.id).length)+1
-      const _cart = {
-        customerId : user.state.loggedInUser.id, 
-        date : new Date(),
-        count : state.count, 
-        totalPrice : state.totalPrice,
-        cart : state.cart,
-        orderNumber : orderNumber
-      }
-      await axios.post('/orders/order', _cart)
-      
-      state.cart = []
-      state.count = 0
-      state.totalPrice = 0
-      state.populate=false 
-      }
-    },
     
     SAVE_ORDER_ID: async (state, orders) => {
       state.order = orders
@@ -205,10 +183,6 @@ export default new Vuex.Store({
     },
     catFilter: ({commit}, val) => {
       commit('CATEGORY_FILTER', val)
-    },
-    saveOrder: async ({commit}) => {
-      const res = await axios.get('/orders/')
-      commit('SAVE_ORDER', res.data)
     },
     saveOrderId: async ({commit}, id) => {
       const res = await axios.get('/orders/' + id)
