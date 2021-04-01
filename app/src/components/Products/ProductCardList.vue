@@ -14,15 +14,15 @@
               </div>
               <div class="row">
                 <h5 class="col-3 orderH5">Series:</h5>
-                <p class="col orderP"> {{ product.series }}</p>
+                <a href="#" @click="catFilter(product.series)" class="col-9 margin-auto">{{ product.series }}</a>
               </div>
               <div class="row">
                 <h5 class="col-3 orderH5">Price:</h5>
-                <p class="col orderP"> {{ product.price }}kr <small>excl VAT</small></p>
+                <p class="col orderP"> {{ product.price }}kr <small>excl. VAT</small></p>
               </div>
               <div class="row">
                 <h5 class="col-3 orderH5">Price:</h5>
-                <p class="col orderP">{{ Math.round(product.price*1.2) }}kr <small>incl VAT</small></p>
+                <p class="col orderP">{{ Math.round(product.price*1.2) }}kr <small>incl. VAT</small></p>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@ import { mapActions } from 'vuex'
 export default {  
   props: ['product'],
     methods: {
-    ...mapActions(['addToCart'])
+    ...mapActions(['addToCart' ,  'catFilter'])
   },
   computed: {
     pImage: function() {
@@ -91,6 +91,13 @@ export default {
   .smallText {
     font-size: 0.6rem;
     font-weight: 300;
+  }
+
+  a {
+  font-weight: 400;
+  font-size: 0.7rem;
+  text-decoration: 0; 
+  padding-left: 0.5rem;
   }
 
 

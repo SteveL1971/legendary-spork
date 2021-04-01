@@ -16,7 +16,7 @@
         </div>
         <div class="row">
           <h5 class="col-4 textH5 px-1">Price:</h5>
-          <p class="col-8 textP"> {{  Math.round(product.price*1.2) }}kr <span class="smallText">incl VAT</span></p>
+          <p class="col-8 textP"> {{  Math.round(product.price*1.2) }}kr <span class="smallText">incl. VAT</span></p>
         </div>
         <div class="row">
           <h5 class="col-12 textH5 px-1">Description:</h5>

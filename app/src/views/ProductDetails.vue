@@ -20,11 +20,11 @@
         </div>
         <div class="row mx-2">
           <h5 class="col-3 textH5">Price:</h5>
-          <p class="col-9 textP"> {{ product.price }}kr <span class="smallText">ex VAT</span></p>
+          <p class="col-9 textP"> {{ product.price }}kr <span class="smallText">excl. VAT</span></p>
         </div>
         <div class="row mx-2 mb-3">
           <h5 class="col-3 textH5">Price:</h5>
-          <p class="col-9 textP"> {{ Math.round(product.price*1.2) }}kr <span class="smallText">incl VAT</span></p>
+          <p class="col-9 textP"> {{ Math.round(product.price*1.2) }}kr <span class="smallText">incl. VAT</span></p>
         </div>
         <div class="mt-2 mx-2 py-2 descStyle">
           <h5 class="textH5 descTextStyle pb-2">Description: </h5>

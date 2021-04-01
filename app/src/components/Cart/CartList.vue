@@ -16,11 +16,11 @@
         </div>
         <div class="row">
           <h5 class="col-3 orderH5">Price:</h5>
-          <p class="col-9 orderP"> {{ product.price }}kr <small>ex VAT</small></p>
+          <p class="col-9 orderP"> {{ product.price }}kr <small>excl. VAT</small></p>
         </div>
         <div class="row">
           <h5 class="col-3 orderH5">Price:</h5>
-          <p class="col-9 orderP">{{ Math.round(product.price*1.2) }}kr <small>incl VAT</small></p>
+          <p class="col-9 orderP">{{ Math.round(product.price*1.2) }}kr <small>incl. VAT</small></p>
         </div>
       </div>
       <div class="imgBox col-4 ">

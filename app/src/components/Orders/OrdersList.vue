@@ -10,7 +10,7 @@
           <h4 class="col-3 headerH4">Items:</h4>
           <p class="col-9 headerP"> {{ product.count }}  </p>
           <h4 class="col-3 headerH4">Order value:</h4>
-          <p class="col-9 headerP"> {{ product.totalPrice }}kr  </p>
+          <p class="col-9 headerP"> {{ product.totalPrice }}kr incl. VAT </p>
         </div>
         <div v-for="(product, index) in product.cart" :key="index" class="row">
           <div class="row gradient-custom px-2">
@@ -37,11 +37,11 @@
             <div class="row">
               <div class="row">
                 <h5 class="col-4 orderH5">Price each:</h5>
-                <p class="col-8 orderP"> {{ Math.round(product.price*1.2)}}kr</p>
+                <p class="col-8 orderP"> {{ Math.round(product.price*1.2)}}kr incl. VAT</p>
               </div>
               <div class="row">
                 <h5 class="col-4 orderH5">Total price:</h5>
-                <p class="col-8 orderP">{{ (Math.round(product.price*1.2))*product.amount }}kr</p>
+                <p class="col-8 orderP">{{ (Math.round(product.price*1.2))*product.amount }}kr incl. VAT</p>
               </div>
             </div>
           </div>
