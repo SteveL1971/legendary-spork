@@ -18,6 +18,10 @@
           <h5 class="col-4 textH5 px-1">Price:</h5>
           <p class="col-8 textP"> {{  Math.round(product.price*1.2) }}kr <span class="smallText">incl VAT</span></p>
         </div>
+        <div class="row">
+          <h5 class="col-12 textH5 px-1">Description:</h5>
+          <p class="col-12 descP px-1">{{ product.desc | shorten }}</p>
+        </div>
       </div>
       <router-link :to="'/product/details/' + product._id" >
       <div class="imgBox">
@@ -37,6 +41,11 @@
 import { mapActions } from 'vuex'
 export default {  
   props: ['product'],
+  filters: {
+    shorten(val) {
+      return val.slice(0,100) + ' ...'
+    }
+  },
   methods: {
     ...mapActions(['addToCart' , 'catFilter'])
   }
@@ -162,6 +171,14 @@ export default {
     margin: auto;
     text-align: left;
     line-height: 2;
+  }
+  .descP {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color:rgb(99, 94, 94);
+    margin: auto;
+    text-align: left;
+    line-height: 1.5;
   }
   .textH5 {
     font-size: 0.7rem;

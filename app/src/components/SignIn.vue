@@ -2,7 +2,7 @@
 
   <div>
     <div class="card formStyle">
-      <div class="gradient-custom mb-3 p-2 d-flex justify-content-center orderH5">Sign in</div>
+      <div class="gradient-custom mb-3 p-2 d-flex justify-content-center orderH5">Log in</div>
         <div class="card-body px-lg-2 pt-4">
           <form class="textColor" @submit.prevent="onSubmit">
             <div class="md-form mb-3 orderP">
@@ -15,7 +15,7 @@
             </div>
             <!-- <button class="btn btn-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button> -->
             <div class="px-5">
-              <button class="btn btn-info btn-rounded btn-block w-100" type="submit">Sign in</button>
+              <button class="btn btn-info btn-rounded btn-block w-100" type="submit">Log in</button>
             </div>
             <div class="d-flex justify-content-center my-4">
               <p>Not a member? <router-link to="/signup">Sign up</router-link></p>

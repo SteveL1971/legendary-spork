@@ -60,7 +60,7 @@ export default {
 
   .textStyle {
     flex: 1;
-    border: 2px solid #007bff50;
+    /* border: 2px solid #007bff50; */
     color: black;
     background-color: #fff;
     height:80px;

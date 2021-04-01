@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from '@/axios'
-import customers from './modules/Customers'
+// import customers from './modules/Customers'
 import user from './modules/user'
 
 Vue.use(Vuex)
@@ -144,9 +144,13 @@ export default new Vuex.Store({
 
       if(state.count>0 && user.state.loggedIn){
       const orderNumber = (state.order.length)+1
+
+      const date = new Date()
+      const formattedDate = date.toLocaleString()
+
       const _cart = {
         customerId : user.state.loggedInUser.id, 
-        date : new Date(),
+        date : formattedDate,
         count : state.count, 
         totalPrice : state.totalPrice,
         cart : state.cart,
@@ -214,7 +218,7 @@ export default new Vuex.Store({
     },
   },
   modules: {
-    customers,
+    // customers,
     user
   }
 })

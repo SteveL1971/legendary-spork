@@ -25,6 +25,7 @@ export default {
 <style scoped>
   .grid {
     padding-top: 1rem;
+    padding-bottom: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;

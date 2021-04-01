@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="cardBox bg-white mb-2 py-2 row">
+    <div class="cardBox bg-white mb-2 pt-2 row">
       <div class="col-8 px-1">
         <div class="row gradient-custom">
           <h4 class="col-3 align-text-center headerH4">Name:</h4>
@@ -59,7 +59,7 @@ export default {
     background-color: white;
   }
   .textStyle {
-    border: 2px solid #007bff50;
+    /* border: 2px solid #007bff50; */
     color: black;
     height:130px;
     border:0;

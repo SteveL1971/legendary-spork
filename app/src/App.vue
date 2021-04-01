@@ -97,7 +97,7 @@ h4 {
 }
 
 .textStyle {
-  border: 2px solid #007bff50;
+  /* border: 2px solid #007bff50; */
   color: black;
   background-color: #fff;
   border:0;

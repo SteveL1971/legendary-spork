@@ -24,7 +24,7 @@
     <div class="px-5 col-12">
     <button class="btn btn-info w-100 waves-effect z-depth-0">Sign up</button>
     <div class="d-flex justify-content-center my-4">
-      <p>Already a member? <router-link to="/signin">Login</router-link></p>
+      <p>Already a member? <router-link to="/signin">Log in</router-link></p>
     </div>
     </div>
   </form>
@@ -44,7 +44,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['addCustomer' , 'register']),
+    // ...mapActions(['addCustomer' , 'register']),
+    ...mapActions(['register']),
     onSubmit() {
       if(this.user.firstName !== '' && this.user.lastName !== '' && this.user.email !== '' && this.user.password !== '') {
         this.register(this.user)

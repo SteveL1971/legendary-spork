@@ -1,5 +1,5 @@
 <template>
-  <div class="contain">
+  <div class="contain cartStyle">
     <cart />
     <router-view/>
   </div>
@@ -13,3 +13,7 @@ export default {
 }
 
 </script>
+
+<style scoped>
+
+</style>

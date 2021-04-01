@@ -34,7 +34,7 @@
                 </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li v-if="!loggedIn">
-                  <router-link class="link dropdown-item" to="/signin"><img :src="pImage4" class="imgMini">Login</router-link>
+                  <router-link class="link dropdown-item" to="/signin"><img :src="pImage4" class="imgMini">Log in</router-link>
                 </li>
                 <li v-if="!loggedIn">
                   <router-link class="link dropdown-item" to="/signup"><img :src="pImage5" class="imgMini">Sign up</router-link>

@@ -6,7 +6,7 @@
         <div class="links d-flex justify-content-center my-2">
           <p class="mb-3 text-center">Here at Funko Store we would like to think of ourselves as your favorite friendly Funko-Pop resource. We are prepared to go the extra mile for you, and rest assured we will put in plenty of extra effort to ensure that we always keep you up to date with the latest hype and releases. Like you we understand the potential value of collectibles, and the pleasure and excitement that collecting can bring. We intend to do our very best to provide you with the highest quality service, and we also hope you will find our sortiment of both rare and regular Funko-Pops to your satisfaction. Please sign in already to start browsing our extensive selection of Funko Pops!</p>
           <div v-if="!loggedIn">
-            <p class="text-center">Already a member? <router-link to="/signin">Login</router-link></p>
+            <p class="text-center">Already a member? <router-link to="/signin">Log in</router-link></p>
             <p class="text-center">Not a member? <router-link to="/signup">Sign up</router-link></p>
           </div>
         </div>

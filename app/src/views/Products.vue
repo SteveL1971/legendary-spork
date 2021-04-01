@@ -1,7 +1,7 @@
 <template>
   <div>
     <div  v-if="loggedIn" class="products">
-      <div class="mt-3 mb-3 d-flex justify-content-between" >
+      <div class="d-flex justify-content-between pt-3 pb-2 px-1 px-sm-2" >
         <form>
             <div class="d-flex">
               <input class= "form-control mx-2" type="text" placeholder="Search..." v-model="searchVal" @keyup="search(searchVal)">        
@@ -21,7 +21,7 @@
       <div class="container style404">
         <h1>Please log in!</h1>
         <div class="links d-flex justify-content-center my-2">
-          <p>Already a member? <router-link to="/signin">Login</router-link></p>
+          <p>Already a member? <router-link to="/signin">Log in</router-link></p>
           <p>Not a member? <router-link to="/signup">Sign up</router-link></p>
         </div>
         <img :src="pImage" class="imgStyle">
@@ -67,8 +67,10 @@ export default {
 
 <style scoped>
   .products {
-    display: block;
+    /* display: block; */
+    background: #9de2e036;
     margin: auto;
+    padding-bottom: 1rem;
   }
 
   .links {

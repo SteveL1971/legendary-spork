@@ -18,7 +18,7 @@ exports.verifyToken = (req, res, next) => {
     return res.status(401).json({
       statusCode: 401,
       status: false,
-      message: 'Access Restricted! Please Login'
+      message: 'Access Restricted! Please Log in'
     })
   }
 }

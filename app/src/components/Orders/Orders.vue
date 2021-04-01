@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="loggedIn" class="list card">
-      <div class="cardBox d-flex justify-content-between bg-white my-2 px-3">
+      <div class="cardBox d-flex justify-content-between bg-white my-2 px-2">
         <div class="textStyle">
           <div class="row gradient-custom p-2">
           <h4 class="col-3 headerH4">id:</h4>
@@ -21,7 +21,7 @@
       <div class="container style404">
         <h1>Please log in!</h1>
         <div class="links d-flex justify-content-center my-2">
-          <p>Already a member? <router-link to="/signin">Login</router-link></p>
+          <p>Already a member? <router-link to="/signin">Log in</router-link></p>
           <p>Not a member? <router-link to="/signup">Sign up</router-link></p>
         </div>
         <!-- <p>Please log in!</p> -->
@@ -63,20 +63,29 @@ export default {
       padding: 0;
     }
 
-    .links{
-      flex-direction: column;
-    }
+.textStyle {
+  color: black;
+  background-color: #fff;
+  border:0;
+  width:100%;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
 
-  .cardBox {
-    display: flex;
-    margin: auto;
-    width: 99%;
+  .links{
+    flex-direction: column;
   }
 
-    .imgStyle {
-    padding-top: 2rem;
-    width: 30%;
-  }
+.cardBox {
+  display: flex;
+  margin: auto;
+  width: 97%;
+}
+
+  .imgStyle {
+  padding-top: 2rem;
+  width: 30%;
+}
 
   .style404 {
     width: 100%;
@@ -95,10 +104,22 @@ export default {
   
   .headerP {
     color: black;
+    font-size: 0.5rem;
+    font-weight: 400;
+    margin: auto;
+    text-align: left;
+    line-height: 1.5;
   }
+
   .headerH4 {
     color: black;
+    font-size: 0.5rem;
+    font-weight: 600;
+    margin: auto;
+    text-align: left;
+    line-height: 1.5;
   }
+
   .grid {
     padding-top: 1rem;
     display: grid;

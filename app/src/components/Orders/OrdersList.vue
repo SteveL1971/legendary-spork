@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="cardBox d-flex justify-content-between bg-white mb-2 px-3">
+    <div class="cardBox d-flex justify-content-between bg-white mb-2 px-2">
       <div class="layout">
         <div class="row gradient-custom2 p-2">
           <h4 class="col-3 headerH4">Order:</h4>
@@ -83,13 +83,12 @@ export default {
 <style scoped>
 
   .layout {
-    border: 2px solid #007bff50;
     color: black;
     background-color: #fff;
     border:0;
     width:100%;
     margin-bottom: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 
   .imgStyle {
@@ -99,7 +98,7 @@ export default {
   .cardBox {
     display: flex;
     margin: auto;
-    width: 99%;
+    width: 97%;
   }
 
   .imgStyle:hover {
@@ -142,25 +141,23 @@ export default {
   line-height: 2;
 }
 
-  
+  .headerP {
+    color: black;
+    font-size: 0.5rem;
+    font-weight: 400;
+    margin: auto;
+    text-align: left;
+    line-height: 1.5;
+  }
 
-.headerP {
-  color: black;
-  font-size: 0.5rem;
-  font-weight: 500;
-  margin: auto;
-  text-align: left;
-  line-height: 2;
-}
-
-.headerH4 {
-  color: black;
-  font-size: 0.5rem;
-  font-weight: 600;
-  margin: auto;
-  text-align: left;
-  line-height: 2;
-}
+  .headerH4 {
+    color: black;
+    font-size: 0.5rem;
+    font-weight: 600;
+    margin: auto;
+    text-align: left;
+    line-height: 1.5;
+  }
   .orderP {
     color: black;
     font-size: 0.5rem;
@@ -168,8 +165,8 @@ export default {
     margin: auto;
     text-align: left;
     line-height: 1.7;
-
   }
+  
   .orderH5 {
     color: black;
     font-size: 0.5rem;
