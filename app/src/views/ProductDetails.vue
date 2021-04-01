@@ -1,5 +1,6 @@
 <template>
-  <div class="card">
+<div>
+  <div v-if="loggedIn" class="card">
     <div class="textStyle d-flex justify-content-between">
       <div class="textLayout mb-2">
         <div class="row mx-2 gradient-custom">
@@ -39,6 +40,19 @@
       </div>
     </div>
   </div>
+
+  <div v-if="!loggedIn">
+    <div class="container style404">
+      <h1>Please log in!</h1>
+      <div class="links d-flex justify-content-center my-2">
+        <p>Already a member? <router-link to="/signin">Log in</router-link></p>
+        <p>Not a member? <router-link to="/signup">Sign up</router-link></p>
+      </div>
+      <img :src="pImage" class="imgStyle2">
+    </div>
+  </div>
+  
+</div>
 </template>
 
 <script>
@@ -49,9 +63,9 @@ export default {
     ...mapActions(['getProduct', 'clearPost', 'addToCart'])
   },
   computed: {
-    ...mapGetters(['product']),
+    ...mapGetters(['product' , 'loggedIn']),
     pImage: function() {
-      return require(`@/assets/img/` + this.product.img)
+      return require(`@/assets/img/dovahkiin.jpg`)
     },
   },
   created() {
@@ -85,9 +99,27 @@ export default {
     background-color: #fff;
     padding-top: 1rem;
   }
+    .links {
+    flex-direction: column;
+  }
+
+  .style404 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding-top: 5rem;
+  }
 
   .imgStyle {
     width:240px;
+  }
+
+  .imgStyle2 {
+    padding-top: 2rem;
+    width: 30%;
   }
 
   .imgBox {
@@ -138,8 +170,8 @@ export default {
 
   p {
     color: black;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 0.7rem;
+    font-weight: 400;
   }
 
   .headerStyle {
