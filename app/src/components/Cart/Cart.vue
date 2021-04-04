@@ -13,7 +13,7 @@
             <button @click="saveOrderId(loggedInUser.id)" class="btn btn-info">Save cart</button>
           </div>
         </div>
-        <cart-list v-for="product in cart" :key="product.id" :product="product" />
+        <cart-list v-for="product in cart" :key="product._id" :product="product" />
       </div>
       <div v-if="count==0 && !orderCompleted">
           <div class="container style404 w-75">

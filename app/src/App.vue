@@ -14,11 +14,15 @@ export default {
   components: { Navbar },
 
   methods: {
-    ...mapActions(['getProducts', 'checkUser'])
+    ...mapActions(['getProducts', 'checkUser', 'getCart'])
   },
   created() {
     this.getProducts()
     this.checkUser()
+    this.getCart()
+  },
+  updated() {
+    this.getCart()
   }
 }
 

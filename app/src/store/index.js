@@ -1,13 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from '@/axios'
-// import customers from './modules/Customers'
 import user from './modules/user'
 
 Vue.use(Vuex)
-export const state = {
-  count: 'count'
-}
+
 export default new Vuex.Store({
   state: {
     products: [
@@ -19,9 +16,10 @@ export default new Vuex.Store({
     cart: [],
     order: [],
     product: [],
-    comp: 'Grid',
+    comp: 'List',
     searchVal: '',
     count: 0,
+    count2: 0,
     totalPrice: 0, 
     populate: false,
     orderCompleted: false
@@ -37,10 +35,37 @@ export default new Vuex.Store({
       })
       return taxedProducts
     },
-    count: state => state.count,
-    totalPrice: state => state.totalPrice,
+
+    // count: state => {
+    //   return state.cart.reduce((acc, item) => {
+    //       if(user.state.loggedInUser.id===item.customerId){
+    //           acc+=item.amount;
+    //       }
+    //       return acc;
+    //   }, 0);
+    // },
+
+    count: (state) => {
+      state.count=0
+      state.cart.forEach(item => {
+          if(user.state.loggedInUser.id===item.customerId) state.count += item.amount;
+      })
+      return state.count
+    },
+
+    totalPrice: (state) => {
+      state.totalPrice=0
+      state.cart.forEach(item => {
+        if(user.state.loggedInUser.id==item.customerId) state.totalPrice += item.amount*Math.round(item.price*1.2)
+      })
+      return state.totalPrice
+    },
+
     comp: state => state.comp,
-    cart: state => state.cart,
+    cart: (state) => {
+      return state.cart.filter(cart => cart.customerId.match(user.state.loggedInUser.id))
+    },
+ 
     order: state => state.order,
     populate: state => state.populate,
     product: state => state.product,
@@ -48,57 +73,143 @@ export default new Vuex.Store({
     orderCompleted:state => state.orderCompleted,
 
     filteredProducts: (state) => {
-      // return state.products.filter(product => product.name.toLowerCase().match(state.searchVal.toLowerCase()))
       return state.products.filter(product => product.series.toLowerCase().match(state.searchVal.toLowerCase())||product.name.toLowerCase().match(state.searchVal.toLowerCase()))
     }
   },
+
   mutations: {
-    ADD_CART_ITEM: (state, product) => {
+
+    GET_CART: (state, savedCart) => {
+      state.cart = savedCart
+      state.count=0
+      state.cart.forEach(item => {
+        if(user.state.loggedInUser.id==item.customerId) state.count += item.amount
+      })
+
+      if (state.count>0){
+        state.populate=true
+      }else {
+        state.populate=false
+      }
+    },
+
+    // REFRESH_DB: async (state, savedCart) => {
+      // state.cart=savedCart
+      // const _cart = {
+      //   customerId: user.state.loggedInUser.id,
+      //   itemId: "1",
+      // }
+      // state.cart.push(_cart)
+      // await axios.post('/cart/post', _cart)
+      // console.log("sent", user.state.loggedInUser.id)
+
+      // axios.delete('/cart/delete', {
+      //   data: {
+      //     itemId: "1",
+      //     customerId: user.state.loggedInUser.id
+      //   }
+      // })
+    // },
+
+    ADD_CART_ITEM: async (state, [ product , savedCart ]) => {
+      
+      state.cart=savedCart
       let exists= false
+      if (product.itemId==null) {
+        product.itemId=product._id
+      }
       if(state.cart.length) {
         state.cart.forEach(c => {
-            if(c._id === product._id) {
+            if (c.customerId === user.state.loggedInUser.id && c.itemId === product.itemId) {
               c.amount ++
+              const _cart = {
+                customerId: user.state.loggedInUser.id,
+                itemId: product.itemId,
+                amount: c.amount
+                }
+              axios.patch('/cart/patch', _cart)
               exists= true
-              return;
-            }
+            } 
           })
       } 
+
       if(!exists) {
-        state.cart.push({_id: product._id, id: product.id, name: product.name, number: product.number, series: product.series,  price: product.price, img: product.img, amount: 1  })
+        const _cart = {
+          customerId: user.state.loggedInUser.id,
+          itemId: product._id,
+          name: product.name,
+          number: product.number,
+          series: product.series,
+          price: product.price,
+          img: product.img,
+          amount: 1,
+        }
+        state.cart.push(_cart)
+        await axios.post('/cart/post', _cart)
       }
-      state.count ++
-      state.totalPrice += Math.round(product.price * 1.2)
+
+      // state.count ++
+      // state.totalPrice += Math.round(product.price * 1.2)
       state.populate=true
     },
-    REMOVE_FROM_CART: (state, product) => {
+
+    REMOVE_FROM_CART: async ( state, [ product , savedCart ]) => {
+
+      state.cart=savedCart
+      
       if(state.cart.length) {
         state.cart.forEach(c => {
-            if(c._id === product._id) {
-              c.amount --        
-              if (c.amount==0) {
-                state.cart.splice(state.cart.indexOf(product), 1)
-              }
-              return;
+          if(c.itemId === product.itemId) {
+            c.amount --        
+            const _cart = {
+              customerId: user.state.loggedInUser.id,
+              itemId: product.itemId,
+              amount: c.amount,
             }
-          })
+            if (c.amount > 0) {
+              axios.patch('/cart/patch', _cart)
+            } else {
+              state.cart.splice(state.cart.indexOf(c), 1)
+              axios.delete('/cart/delete', {
+                data: {
+                  itemId: product.itemId,
+                  customerId: user.state.loggedInUser.id
+                }
+              })
+            }
+          }
+        })
+      } 
+      
+    },
+
+    REMOVE_CART_ITEM: (state, [ product , savedCart ]) => {
+
+      state.cart=savedCart
+      
+      if(state.cart.length) {
+        state.cart.forEach(c => {
+          if(c.itemId === product.itemId && c.customerId === user.state.loggedInUser.id) {
+            c.amount --        
+            state.cart.splice(state.cart.indexOf(c), 1)
+            axios.delete('/cart/delete', {
+              data: {
+                itemId: product.itemId,
+                customerId: user.state.loggedInUser.id
+              }
+            })
+          } 
+        })
       } 
 
-      state.totalPrice -= Math.round(product.price * 1.2)
-      state.count --
-      if(state.count == 0) {
-        state.populate=false
-      }
+      // state.count -= product.amount
+      // state.totalPrice -= product.amount*(Math.round(product.price * 1.2))  
+      // if(state.count == 0) {
+      //   state.populate=false
+      // }
+      
     },
 
-    REMOVE_CART_ITEM: (state, product) => {
-      state.count -= product.amount
-      state.totalPrice -= product.amount*(Math.round(product.price * 1.2))
-      state.cart.splice(state.cart.indexOf(product), 1)
-      if(state.count == 0) {
-        state.populate=false
-      }
-    },
     CHANGE_COMP: (state, payload) => {
       state.comp = payload
     },
@@ -141,43 +252,50 @@ export default new Vuex.Store({
     
     SAVE_ORDER_ID: async (state, orders) => {
       state.order = orders
-
+      const thisCart = state.cart.filter(cart => cart.customerId.match(user.state.loggedInUser.id))
       if(state.count>0 && user.state.loggedIn){
-      const orderNumber = (state.order.length)+1
+        const orderNumber = (state.order.length)+1
+        const date = new Date()
+        const formattedDate = date.toLocaleString()
+        const _cart = {
+          customerId : user.state.loggedInUser.id, 
+          date : formattedDate,
+          count : state.count, 
+          totalPrice : state.totalPrice,
+          cart : thisCart,
+          orderNumber
+        }
+        await axios.post('/orders/order', _cart)
+        
+        state.cart = []
+        state.count = 0
+        state.totalPrice = 0
+        state.populate=false 
+        state.orderCompleted=true
 
-      const date = new Date()
-      const formattedDate = date.toLocaleString()
-
-      const _cart = {
-        customerId : user.state.loggedInUser.id, 
-        date : formattedDate,
-        count : state.count, 
-        totalPrice : state.totalPrice,
-        cart : state.cart,
-        orderNumber
-      }
-      await axios.post('/orders/order', _cart)
-      
-      state.cart = []
-      state.count = 0
-      state.totalPrice = 0
-      state.populate=false 
-      state.orderCompleted=true
-      }
-    },
+        axios.delete('/cart/deleteCart', {
+          data: {
+            customerId: user.state.loggedInUser.id
+          }
+      })
+    }
+  },
 
   CLEAR_POST: state => state.product = []
 
   },
   actions: {
-    addToCart: ({commit}, product) => {
-      commit('ADD_CART_ITEM', product)
+    addToCart: async ({commit}, product) => {
+      const res = await axios.get('/cart/')
+      commit('ADD_CART_ITEM', [product , res.data])
     },
-    removeFromCart: ({commit}, product) => {
-      commit('REMOVE_FROM_CART', product)
+    removeFromCart: async ({commit}, product) => {
+      const res = await axios.get('/cart/')    
+      commit('REMOVE_FROM_CART', [product, res.data])
     },
-    removeCartItem: ({commit}, product) => {
-      commit('REMOVE_CART_ITEM', product)
+    removeCartItem: async ({commit}, product) => {
+      const res = await axios.get('/cart/')
+      commit('REMOVE_CART_ITEM', [product, res.data])
     },
     changeComp: ({commit}, component) => {
       commit('CHANGE_COMP', component)
@@ -196,6 +314,10 @@ export default new Vuex.Store({
       const res = await axios.get('/products')
       commit('SET_PRODUCTS', res.data)
     },
+    getCart: async ({commit}) => {
+      const res = await axios.get('/cart/')
+      commit('GET_CART', res.data)
+    },
     getOrders: async ({commit}) => {
       const res = await axios.get('/orders/')
       commit('SET_ORDERS', res.data)
@@ -213,6 +335,13 @@ export default new Vuex.Store({
     resetStore: ({commit}) => {
       commit('RESET_STORE')
     },
+
+    // refreshDb: async ({commit}) => {
+    //   const res = await axios.get('/cart/')
+    //   console.log('refreshing db')
+    //   commit('REFRESH_DB',  [res.data])
+    // },
+
     orderCompleteFalse: ({commit}) => {
       commit('ORDER_COMPLETE_FALSE')
     },

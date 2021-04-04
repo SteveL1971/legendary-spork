@@ -25,12 +25,14 @@
       </div>
       <div class="imgBox col-4 ">
         <div id="buttons" class="d-flex justify-content-between">
-            <button @click="removeCartItem(product)" class="btn btn-info"><i class="fas fa-trash-alt"></i></button>
-            <button @click="removeFromCart(product)" class="btn">-</button>
+            <!-- <button @click="removeCartItem(product)" class="btn btn-info"><i class="fas fa-trash-alt"></i></button> -->
+            <button @click="remCartItem" class="btn btn-info"><i class="fas fa-trash-alt"></i></button>
+            <!-- <button @click="removeFromCart(product)" class="btn">-</button> -->
+            <button @click="remCart" class="btn">-</button>
             <button @click="addToCart(product)" class="btn">+</button>
         </div>
         <div class="rightStyle">
-          <router-link :to="'/product/details/' + product._id" class="card alignCenter">
+          <router-link :to="'/product/details/' + product.itemId" class="card alignCenter">
             <img :src=product.img class="imgStyle" :alt="product.name">
           </router-link>
           <div class="">
@@ -48,8 +50,19 @@ import { mapActions } from 'vuex'
 export default {  
   props: ['product'],
   methods: {
-    ...mapActions(['removeCartItem', 'addToCart', 'removeFromCart'])
-  },
+    ...mapActions(['removeCartItem', 'addToCart', 'removeFromCart']),
+
+    remCart() {
+      this.removeFromCart(this.product)
+    },
+    remCartItem() {
+      this.removeCartItem(this.product)
+    }
+  }, 
+  
+
+
+
 }
 </script>
 

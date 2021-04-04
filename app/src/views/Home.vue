@@ -20,11 +20,18 @@
 import { mapGetters } from 'vuex'
 export default {
   computed: {
-    ...mapGetters(['order', 'loggedIn' , 'loggedInUser']),
+    
     pImage: function() {
       return require(`@/assets/img/rv-walker.jpg`)
     },
+
   },
+  methods: {
+    ...mapGetters(['order', 'loggedIn' , 'loggedInUser', 'getCart']),
+  },
+  updated() {
+    this.getCart()
+  }
 }
 
 </script>

@@ -37,10 +37,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['login']),
+    ...mapActions(['login','getCart']),
 
-    onSubmit() {
-      if(this.email !== '' && this.password !== '') {
+    onSubmit () {
+      if (this.email !== '' && this.password !== '') {
         let user = {
           email: this.customerEmail,
           password: this.customerPassword

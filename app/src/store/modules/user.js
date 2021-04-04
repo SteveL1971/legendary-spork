@@ -17,7 +17,7 @@ export default {
   getters: {
     loggedIn: state => state.loggedIn,
     loggedInFirstName: state => state.loggedInFirstName,
-    loggedInUser: state => state.loggedInUser
+    loggedInUser: state => state.loggedInUser,
   },
   mutations: {
     SET_USER: (state, token ) => {
@@ -33,6 +33,7 @@ export default {
           exp: decoded.exp
         }
         state.loggedInFirstName=decoded.firstName
+        console.log(state.cart)
       } else {
         state.userToken = null
         state.loggedIn = false
@@ -113,6 +114,7 @@ export default {
             }
           }
         })
+
     },
     checkUser: ({commit}) => {
       commit('CHECK_USER')

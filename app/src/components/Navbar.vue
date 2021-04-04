@@ -68,9 +68,13 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+
 export default {
+
   computed: {
-    ...mapGetters(['count', 'loggedIn', 'loggedInUser']),
+    
+    ...mapGetters(['count', 'loggedIn', 'loggedInUser' , 'getCart']),
+    
     populate() {
      return this.$store.getters.populate;
     },
@@ -101,8 +105,9 @@ export default {
     signOut() {
       this.logout()
       this.resetStore()
-    }
-  }
+    },
+  },
+
 }
 
 </script>
