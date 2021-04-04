@@ -45,7 +45,7 @@
               </div>
             </div>
           </div>
-          <router-link :to="'/product/details/' + product._id" class="col-3 alignment">
+          <router-link :to="'/product/details/' + product.itemId" class="col-3 alignment">
             <div class="imgBox">
                 <img :src=product.img class="imgStyle" :alt="product.name">
             </div>

@@ -2,7 +2,7 @@ const mongodb = require('mongoose');
 
 const cartSchema = new mongodb.Schema({
         amount: { type: Number, required: false }, 
-        id: { type: String, required: false }, 
+        itemId: { type: String, required: false }, 
         img: { type: String, required: false }, 
         name: { type: String, required: false }, 
         number: { type: String, required: false }, 
